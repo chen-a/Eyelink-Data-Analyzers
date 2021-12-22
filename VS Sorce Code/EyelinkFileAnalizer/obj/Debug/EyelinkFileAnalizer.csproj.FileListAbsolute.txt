@@ -53,3 +53,20 @@ C:\Users\rilarson\Desktop\EyelinkFileAnalizer\bin\Debug\EPPlus.xml
 C:\Users\rilarson\Desktop\EyelinkFileAnalizer\bin\Debug\itextsharp.xml
 C:\Users\rilarson\Desktop\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.Form2.resources
 C:\Users\rilarson\Desktop\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.csproj.CopyComplete
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\EyelinkFileAnalizer.exe.config
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\EyelinkFileAnalizer.exe
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\EyelinkFileAnalizer.pdb
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\EPPlus.dll
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\itextsharp.dll
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\EPPlus.xml
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\bin\Debug\itextsharp.xml
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.csproj.AssemblyReference.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.csproj.SuggestedBindingRedirects.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.Form1.resources
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.Form2.resources
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.Properties.Resources.resources
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.csproj.GenerateResource.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.csproj.CoreCompileInputs.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.csproj.CopyComplete
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.exe
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalizer\obj\Debug\EyelinkFileAnalizer.pdb

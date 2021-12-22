@@ -50,7 +50,7 @@ namespace EyelinkFileAnalizer
                         // Could not load the image - probably related to Windows file system permissions.
                         MessageBox.Show("Cannot display the image: " + file.Substring(file.LastIndexOf('\\'))
                             + ". You may not have permission to read the file, or " +
-                            "it may be corrupt.\n\nReported error: " + ex.Message);
+                            "it may be corrupt.\n\nReported error: " + ex.Message + "\nForm2.cs:53");
                     }
                 }
             }
@@ -127,7 +127,7 @@ namespace EyelinkFileAnalizer
                 //Checks for the correct file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
-                    MessageBox.Show("Incorect File Type Found\nPlease Enter Only Correct File Types\n(.edf converted to .asc)\n\nPress \"OK\" To Remove Incorrect Files");
+                    MessageBox.Show("Incorect File Type Found\nPlease Enter Only Correct File Types\n(.edf converted to .asc)\n\nPress \"OK\" To Remove Incorrect Files\nForm2.cs:130");
                     for (int i = 0; i < listBox1.Items.Count; i++)
                     {
                         string item = Convert.ToString(listBox1.Items[i]);
@@ -176,7 +176,7 @@ namespace EyelinkFileAnalizer
                             string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                             if (splitData.Length < 11)
                             {
-                                MessageBox.Show("File does not have velocity data recorded");
+                                MessageBox.Show("File does not have velocity data recorded\nForm2.cs:179");
                                 break;
                             }
                             if (splitData[1] == "R")

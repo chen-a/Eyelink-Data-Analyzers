@@ -230,7 +230,10 @@ namespace EyelinkFileAnalizer
                 GetEndSaccadeData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions);
                 if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
                 {
-                    MessageBox.Show("File Cannot Be Analyzed\nNot Enough Data Recorded");
+                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected");
+                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected");
+                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected");
+                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected");
                     progressBar1.Value = 0;
                     DragAndDropTB.Text = string.Empty;
                     return;
@@ -247,7 +250,7 @@ namespace EyelinkFileAnalizer
                     doc.Add(new Paragraph("Right Eye Abduction: \n"));
                     if (rightEyeAbductions.Count == 0)
                     {
-                        doc.Add(new Paragraph("Data Missing\n"));
+                        doc.Add(new Paragraph("No Right Eye Abductions Detected\n"));
                     }
                     else
                     {
@@ -291,7 +294,7 @@ namespace EyelinkFileAnalizer
                     doc.Add(new Paragraph("Right Eye Adduction:"));
                     if (rightEyeAdductions.Count == 0)
                     {
-                        doc.Add(new Paragraph("Data Missing\n"));
+                        doc.Add(new Paragraph("No Right Eye Adductions Detected\n"));
                     }
                     else
                     {
@@ -335,7 +338,7 @@ namespace EyelinkFileAnalizer
                     doc.Add(new Paragraph("Left Eye Abduction:"));
                     if (leftEyeAbductions.Count == 0)
                     {
-                        doc.Add(new Paragraph("Data Missing\n"));
+                        doc.Add(new Paragraph("No Left Eye Abductions Detected\n"));
                     }
                     else
                     {
@@ -379,7 +382,7 @@ namespace EyelinkFileAnalizer
                     doc.Add(new Paragraph("Left Eye Adduction:"));
                     if (leftEyeAdductions.Count == 0)
                     {
-                        doc.Add(new Paragraph("Data Missing\n"));
+                        doc.Add(new Paragraph("No Left Eye Adductions Detected\n"));
                     }
                     else
                     {
@@ -424,13 +427,13 @@ namespace EyelinkFileAnalizer
                 }
                 catch (System.IO.IOException)
                 {
-                    MessageBox.Show("The report .pdf file is already open. \n Close it and try again");
+                    MessageBox.Show("The report .pdf file is already open. \n Close it and try again\nForm1.cs:430");
                     progressBar1.Value = 0;
                     return;
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Non IOException Error\nForm1.cs:436");
                     progressBar1.Value = 0;
                     return;
                 }
@@ -450,7 +453,7 @@ namespace EyelinkFileAnalizer
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File");
+                MessageBox.Show("Please Enter A File\nForm1.cs:456");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
@@ -924,6 +927,7 @@ namespace EyelinkFileAnalizer
                 }
                 catch (IOException)
                 {
+                    MessageBox.Show("IOException Error\n(Form1.cs:930");
                 }
             }
         }
