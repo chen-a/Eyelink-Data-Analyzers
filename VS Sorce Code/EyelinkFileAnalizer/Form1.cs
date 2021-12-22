@@ -66,7 +66,7 @@ namespace EyelinkFileAnalizer
                         string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                         if (splitData.Length < 11)
                         {
-                            MessageBox.Show("File does not have velocity data recorded");
+                            MessageBox.Show("File does not have velocity data recorded\nForm1.cs:69");
                             break;
                         }
                         if (splitData[1] == "R")
@@ -230,10 +230,10 @@ namespace EyelinkFileAnalizer
                 GetEndSaccadeData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions);
                 if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
                 {
-                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected");
-                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected");
-                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected");
-                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected");
+                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:233");
+                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:234");
+                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:235");
+                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:236");
                     progressBar1.Value = 0;
                     DragAndDropTB.Text = string.Empty;
                     return;
@@ -447,7 +447,7 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:450");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -458,7 +458,7 @@ namespace EyelinkFileAnalizer
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "Form1.cs:461");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }

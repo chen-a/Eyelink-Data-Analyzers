@@ -134,7 +134,7 @@ namespace EyelinkFileAnalizer
                 //Checks for the correct file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
-                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)");
+                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)\nForm1.cs:137");
                     DragAndDropTB.Text = string.Empty;
                     return;
                 }
@@ -262,25 +262,25 @@ namespace EyelinkFileAnalizer
                 }
                 if (resultsTB.Text == "")
                 {
-                    resultsTB.Text = "There Is A Problem With The Input Data";
+                    resultsTB.Text = "There Is A Problem With The Input Data\nForm1.cs:265";
                 }
 
             }
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:272");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File");
+                MessageBox.Show("Please Enter A File\nForm1.cs:278");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:283");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -329,7 +329,7 @@ namespace EyelinkFileAnalizer
                 //Checks for the correct file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
-                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)");
+                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)\nForm1.cs:332");
                     DragAndDropTB.Text = string.Empty;
                     return;
                 }
@@ -456,7 +456,7 @@ namespace EyelinkFileAnalizer
                 }
                 if (resultsTB.Text == "")
                 {
-                    resultsTB.Text = "There Is A Problem With The Input Data";
+                    resultsTB.Text = "There Is A Problem With The Input Data\nForm1.cs:459";
                 }
                 else
                 {
@@ -472,18 +472,18 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:475");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File");
+                MessageBox.Show("Please Enter A File\nForm1.cs:481");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:486");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }

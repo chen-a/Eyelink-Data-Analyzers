@@ -66,7 +66,7 @@ namespace EyelinkFileAnalizer
                         string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                         if (splitData.Length < 11)
                         {
-                            MessageBox.Show("File does not have velocity data recorded");
+                            MessageBox.Show("File does not have velocity data recorded\nForm1.cs:69");
                             break;
                         }
                         if (splitData[1] == "R")
@@ -132,12 +132,12 @@ namespace EyelinkFileAnalizer
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
-
                     }
                 }
             }
             inputFile.Close();
         }
+
         //Reads all samples for what ever list is passed through listToRead has the start and end times of all saccades
         private void RightSampleReader (ref List<Saccade> listToRead, ref List<List<double>> finalList)
         {
@@ -353,7 +353,7 @@ namespace EyelinkFileAnalizer
                 //Checks for the correct file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
-                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)");
+                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)\nForm1.cs:356");
                     DragAndDropTB.Text = string.Empty;
                     return;
                 }
@@ -368,7 +368,10 @@ namespace EyelinkFileAnalizer
                 //Check if data is valid
                 if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
                 {
-                    MessageBox.Show("File Cannot Be Analyzed\nNot Enough Data Recorded");
+                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:371");
+                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:372");
+                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:373");
+                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:374");
                     progressBar1.Value = 0;
                     DragAndDropTB.Text = string.Empty;
                     return;
@@ -590,13 +593,13 @@ namespace EyelinkFileAnalizer
                 }
                 catch (System.IO.IOException)
                 {
-                    MessageBox.Show("The report .pdf file is already open. \n Close it and try again");
+                    MessageBox.Show("The report .pdf file is already open. \n Close it and try again\nForm1.cs:596");
                     progressBar1.Value = 0;
                     return;
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Non IOException Error\nForm1.cs:602");
                     progressBar1.Value = 0;
                     return;
                 }
@@ -610,18 +613,18 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:616");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File");
+                MessageBox.Show("Please Enter A File\nForm1.cs:622");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:627");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -637,7 +640,7 @@ namespace EyelinkFileAnalizer
                 //Check file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
-                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)");
+                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)\nForm1.cs:643");
                     DragAndDropTB.Text = string.Empty;
                     return;
                 }
@@ -794,18 +797,18 @@ namespace EyelinkFileAnalizer
             }
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:800");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File");
+                MessageBox.Show("Please Enter A File\nForm1.cs:806");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "Form1.cs:811");
                 //DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -1038,20 +1041,20 @@ namespace EyelinkFileAnalizer
             }
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "\nForm1.cs:1044");
                 DragAndDropTB.Text = string.Empty;
                 progressBar1.Value = 0;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File");
+                MessageBox.Show("Please Enter A File" + "\nForm1.cs:1051");
                 progressBar1.Value = 0;
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show(exseption.Message + "Form1.cs:1057");
                 DragAndDropTB.Text = string.Empty;
                 progressBar1.Value = 0;
                 return;
@@ -1092,6 +1095,7 @@ namespace EyelinkFileAnalizer
                 }
                 catch (IOException)
                 {
+                    MessageBox.Show("IOException\nForm1.cs:1098");
                 }
             }
         }

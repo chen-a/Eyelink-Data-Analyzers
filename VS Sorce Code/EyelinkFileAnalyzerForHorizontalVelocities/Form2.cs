@@ -50,7 +50,7 @@ namespace EyelinkFileAnalizer
                         // Could not load the image - probably related to Windows file system permissions.
                         MessageBox.Show("Cannot display the image: " + file.Substring(file.LastIndexOf('\\'))
                             + ". You may not have permission to read the file, or " +
-                            "it may be corrupt.\n\nReported error: " + ex.Message);
+                            "it may be corrupt.\n\nReported error: " + ex.Message + "\nForm2.cs:53");
                     }
                 }
             }
@@ -323,7 +323,7 @@ namespace EyelinkFileAnalizer
                 //Checks for the correct file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
-                    MessageBox.Show("Incorect File Type Found\nPlease Enter Only Correct File Types\n(.edf converted to .asc)\n\nPress \"OK\" To Remove Incorrect Files");
+                    MessageBox.Show("Incorect File Type Found\nPlease Enter Only Correct File Types\n(.edf converted to .asc)\n\nPress \"OK\" To Remove Incorrect Files\nForm2.cs:326");
                     for (int i = 0; i < listBox1.Items.Count; i++)
                     {
                         string item = Convert.ToString(listBox1.Items[i]);
@@ -372,7 +372,7 @@ namespace EyelinkFileAnalizer
                             string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                             if (splitData.Length < 11)
                             {
-                                MessageBox.Show("File does not have velocity data recorded");
+                                MessageBox.Show("File does not have velocity data recorded\nForm2.cs:375");
                                 break;
                             }
                             if (splitData[1] == "R")
@@ -444,7 +444,10 @@ namespace EyelinkFileAnalizer
                 //check for lacking data
                 if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
                 {
-                    MessageBox.Show( file + " Cannot Be Analyzed\nNot Enough Data Recorded\n\nPress \"OK\" To Remove The File");
+                    if (rightEyeAbductions.Count == 0) MessageBox.Show(file +" File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:447");
+                    else if (rightEyeAdductions.Count == 0) MessageBox.Show(file + " File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:448");
+                    else if (leftEyeAbductions.Count == 0) MessageBox.Show(file + " File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:449");
+                    else MessageBox.Show(file + " File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:450");
                     listBox1.Items.Remove(file);
                     return;
                 }

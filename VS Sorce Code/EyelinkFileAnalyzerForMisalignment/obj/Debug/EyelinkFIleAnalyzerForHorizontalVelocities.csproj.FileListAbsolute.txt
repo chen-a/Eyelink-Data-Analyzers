@@ -29,3 +29,19 @@ C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForMisalignment\bin\Debug\itextshar
 C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForMisalignment\bin\Debug\EPPlus.xml
 C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForMisalignment\bin\Debug\itextsharp.xml
 C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CopyComplete
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.AssemblyReference.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.SuggestedBindingRedirects.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFileAnalizer.Form1.resources
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFileAnalizer.Properties.Resources.resources
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.GenerateResource.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CoreCompileInputs.cache
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFileAnalizer.exe
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFileAnalizer.pdb
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\EyelinkFileAnalizer.exe.config
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\EyelinkFileAnalizer.exe
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\EyelinkFileAnalizer.pdb
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\EPPlus.dll
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\itextsharp.dll
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\EPPlus.xml
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\itextsharp.xml
+C:\Users\andya\source\repos\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CopyComplete
