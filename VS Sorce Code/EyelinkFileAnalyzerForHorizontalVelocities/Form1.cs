@@ -138,13 +138,13 @@ namespace EyelinkFileAnalizer
             inputFile.Close();
         }
 
+        
         //Reads all samples for what ever list is passed through listToRead has the start and end times of all saccades
         private void RightSampleReader (ref List<Saccade> listToRead, ref List<List<double>> finalList)
         {
             //find input file directory and create a file stream
             string fileDirectory = DragAndDropTB.Text;
             FileStream inputFile = new FileStream(fileDirectory, FileMode.Open, FileAccess.Read);
-
             // read file line by line
             using (var streamReader = new StreamReader(inputFile))
             {
@@ -155,47 +155,52 @@ namespace EyelinkFileAnalizer
                     {
                         //This line seperates all data from a line with differing levels of whitespace to populate the split data array
                         string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                        //Weed out lines that are not samples to find ones that begin saccades
+                        if ((splitData.Length != 9) || (splitData[0] != Convert.ToString(listToRead[i].getStartTime()))) continue;
+                        List<double> sublist = new List<double>();//must create sublist to properly add to a list of lists
 
-                        //Weed out lines that are not samples to find ones that begin saccades 
-                        if ((splitData.Length < 11) || (splitData[0] != Convert.ToString(listToRead[i].getStartTime()))) continue;
-                        else
+                        bool keepGoing = true;
+                        while (keepGoing)
                         {
-                            List<double> sublist = new List<double>();//must create sublist to properly add to a list of lists
-
-                            bool keepGoing = true;
-                            while (keepGoing)
+                            int num = 0;
+                            // check if data is missing or if the first part of data is not a nubmer
+                            if ((splitData.Length < 10) || (splitData[9] == ".") || (!(int.TryParse(splitData[0], out num)))) 
                             {
-                                int num = 0;
-                                // check if data is missing or if the first part of data is not a nubmer
-                                if ((splitData.Length < 11) || (splitData[9] == ".") || (!(int.TryParse(splitData[0], out num)))) 
-                                {
-                                    line = streamReader.ReadLine();
-                                    splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                                    continue;
-                                }
-                                //keep going till we reach the endtime of saccade
-                                if (Convert.ToInt32(splitData[0]) < Convert.ToInt32(listToRead[i].getEndTime()))
-                                {
-                                    sublist.Add(Convert.ToDouble(splitData[9]));
-                                    line = streamReader.ReadLine();
-                                    splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                                    continue;
-                                }
-                                else
-                                {
-                                    sublist.Add(Convert.ToDouble(splitData[9]));
-                                    keepGoing = false;
-                                    break;
-                                }
+                                MessageBox.Show("Old line = " + line + "\nLength - " + line.Length + "\nOld splitData = " + String.Join(" ", splitData) + "\nsplitData Length = " + splitData.Length);
+                                line = streamReader.ReadLine();
+                                splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                                    
+                                //MessageBox.Show("New line = " + line + "\nLength - " + line.Length + "\nNew splitData = " + String.Join(" ", splitData) + "\nsplitData Length = " + splitData.Length);
+                                continue;
                             }
-                            finalList.Add(sublist);
-                            break;
+                            //keep going till we reach the endtime of saccade
+                            else if (Convert.ToInt32(splitData[0]) < Convert.ToInt32(listToRead[i].getEndTime()))
+                            {
+                                MessageBox.Show("else if Old line = " + line + "\nLength - " + line.Length + "\nOld splitData = " + String.Join(" ", splitData) + "\nsplitData Length = " + splitData.Length);
+                                sublist.Add(Convert.ToDouble(splitData[9]));
+                                MessageBox.Show("9 = " + Convert.ToDouble(splitData[9]));
+                                line = streamReader.ReadLine();
+                                splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                                MessageBox.Show("else if New line = " + line + "\nLength - " + line.Length + "\nNew splitData = " + String.Join(" ", splitData) + "\nsplitData Length = " + splitData.Length);
+                                continue;
+                            }
+                            else
+                            {
+                                MessageBox.Show("123" + Convert.ToDouble(splitData[9]));
+                                sublist.Add(Convert.ToDouble(splitData[9]));
+                                keepGoing = false;
+                                break;
+                            }
                         }
+                        finalList.Add(sublist);
+                        break;
+                        
                     }
                 }
             }
             inputFile.Close();
         }
+        
         private void LeftSampleReader(ref List<Saccade> listToRead, ref List<List<double>> finalList)
         {
             //find input file directory and create a file stream
@@ -357,13 +362,14 @@ namespace EyelinkFileAnalizer
                     DragAndDropTB.Text = string.Empty;
                     return;
                 }
+                
                 string sameFolder = fileDirectory.Substring(0, fileDirectory.LastIndexOf('.'));
                 progressBar1.Value = 5;
                 List<Saccade> rightEyeAbductions = new List<Saccade>();
                 List<Saccade> rightEyeAdductions = new List<Saccade>();
                 List<Saccade> leftEyeAbductions = new List<Saccade>();
                 List<Saccade> leftEyeAdductions = new List<Saccade>();
-
+                
                 GetEndSaccadeData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions);
                 //Check if data is valid
                 if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
@@ -381,11 +387,10 @@ namespace EyelinkFileAnalizer
                 List<List<double>> horizontalVelocitiesOverTimeRightEyeAdd = new List<List<double>>();
                 List<List<double>> horizontalVelocitiesOverTimeLeftEyeAbd = new List<List<double>>();
                 List<List<double>> horizontalVelocitiesOverTimeLeftEyeAdd = new List<List<double>>();
-
+                
                 GetSampleData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions, ref horizontalVelocitiesOverTimeRightEyeAbd, ref horizontalVelocitiesOverTimeRightEyeAdd, ref horizontalVelocitiesOverTimeLeftEyeAbd, ref horizontalVelocitiesOverTimeLeftEyeAdd);
                 //Declaration of averageList
                 List<double> averageList = new List<double>();
-
                 progressBar1.Value = 7;
                 string pdfPath = sameFolder + "Report.pdf";
                 string imagePath = sameFolder + "Pic.gif";//create a .gif file used to make graphs
@@ -394,7 +399,7 @@ namespace EyelinkFileAnalizer
                 {
                     PdfWriter.GetInstance(doc, new FileStream(pdfPath, FileMode.Create));
                     doc.Open();
-
+                    
                     //RIGHT EYE ABDUCTION
                     doc.Add(new Paragraph("Right Eye Abduction: \n"));
                     double rightEyeAdbTotal = 0;
@@ -403,7 +408,7 @@ namespace EyelinkFileAnalizer
                         rightEyeAdbTotal += rightEyeAbductions[i].getAverageVelocity();
                     }
                     rightEyeAdbTotal /= rightEyeAbductions.Count;
-
+                    MessageBox.Show("got here4");
                     //calculate peak velocity based on graph data 
                     if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeRightEyeAbd);
                     averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeRightEyeAbd);
@@ -538,7 +543,7 @@ namespace EyelinkFileAnalizer
                     gif = Image.GetInstance(imagePath);
                     doc.Add(gif);
                     progressBar1.Value += 7;
-
+                    
                     doc.NewPage();
                     //LEFT EYE ADDUCTION
                     doc.Add(new Paragraph("Left Eye Adduction:"));
@@ -597,9 +602,9 @@ namespace EyelinkFileAnalizer
                     progressBar1.Value = 0;
                     return;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Non IOException Error\nForm1.cs:602");
+                    MessageBox.Show("Non IOException Error\n" + ex.Message + "\nForm1.cs:602");
                     progressBar1.Value = 0;
                     return;
                 }
