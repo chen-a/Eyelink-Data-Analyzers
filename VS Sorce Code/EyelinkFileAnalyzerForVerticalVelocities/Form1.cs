@@ -712,18 +712,18 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:715");
+                MessageBox.Show("Error: File Not Found\nForm1.cs:715");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File\nForm1.cs:721");
+                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:721");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:726");
+                MessageBox.Show("Error: No Permission To Access The File\nForm1.cs:726");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -938,18 +938,18 @@ namespace EyelinkFileAnalizer
             }
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:941");
+                MessageBox.Show("Error: File Not Found\nForm1.cs:941");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File\nForm1.cs:947");
+                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:947");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message);
+                MessageBox.Show("Error: No Permission To Access The File\nForm1.cs:952");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -1198,20 +1198,20 @@ namespace EyelinkFileAnalizer
             }
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:1201");
+                MessageBox.Show("Error: File Not Found\nForm1.cs:1201");
                 DragAndDropTB.Text = string.Empty;
                 progressBar1.Value = 0;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File\nForm1.cs:1208");
+                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:1208");
                 progressBar1.Value = 0;
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:1214");
+                MessageBox.Show("Error: Unable to Access The File\nForm1.cs:1214");
                 DragAndDropTB.Text = string.Empty;
                 progressBar1.Value = 0;
                 return;

@@ -269,18 +269,18 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:272");
+                MessageBox.Show("Error: File Not Found\nForm1.cs:272");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File\nForm1.cs:278");
+                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:278");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:283");
+                MessageBox.Show("Error: No Permission To Access The File\nForm1.cs:283");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
@@ -472,18 +472,18 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:475");
+                MessageBox.Show("Error: File Not Found\nForm1.cs:475");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please Enter A File\nForm1.cs:481");
+                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:481");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show(exseption.Message + "\nForm1.cs:486");
+                MessageBox.Show("Error: No Permission to Access File\nForm1.cs:486");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
