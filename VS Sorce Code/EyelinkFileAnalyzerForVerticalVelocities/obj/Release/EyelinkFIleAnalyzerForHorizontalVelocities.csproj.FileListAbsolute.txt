@@ -14,3 +14,20 @@ C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\E
 C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CopyComplete
 C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.exe
 C:\Users\rilarson\Desktop\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.pdb
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\EyelinkFileAnalizer.exe.config
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\EyelinkFileAnalizer.exe
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\EyelinkFileAnalizer.pdb
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\EPPlus.dll
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\itextsharp.dll
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\EPPlus.xml
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\bin\Release\itextsharp.xml
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.AssemblyReference.cache
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.SuggestedBindingRedirects.cache
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.Form1.resources
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.Form2.resources
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.Properties.Resources.resources
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.GenerateResource.cache
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CoreCompileInputs.cache
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CopyComplete
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.exe
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForVerticalVelocities\obj\Release\EyelinkFileAnalizer.pdb

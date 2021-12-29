@@ -52,7 +52,6 @@ C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFile
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\itextsharp.dll
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\EPPlus.xml
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\bin\Debug\itextsharp.xml
-C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.AssemblyReference.cache
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.SuggestedBindingRedirects.cache
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFileAnalizer.Form1.resources
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\EyelinkFileAnalyzerForMisalignment\obj\Debug\EyelinkFileAnalizer.Properties.Resources.resources
