@@ -100,12 +100,12 @@ namespace EyelinkFileAnalizer
                         // get average Velocity
                         averageVelocity = amplitude / (duration / 1000);
 
-                        if ((startXPosition > 1720) && (startXPosition < 2120)) direction = "Center To ";
-                        if (startXPosition > 2120) direction = "Right To ";
-                        if (startXPosition < 1720) direction = "Left To ";
-                        if ((endXPosition > 1720) && (endXPosition < 2120)) direction += "Center";
-                        if (endXPosition > 2120) direction += "Right";
-                        if (endXPosition < 1720) direction += "Left";
+                        if ((startXPosition > 440) && (startXPosition < 840)) direction = "Center To ";
+                        if (startXPosition > 840) direction = "Right To ";
+                        if (startXPosition < 440) direction = "Left To ";
+                        if ((endXPosition > 440) && (endXPosition < 840)) direction += "Center";
+                        if (endXPosition > 840) direction += "Right";
+                        if (endXPosition < 440) direction += "Left";
 
                         //add to appropriate list of Saccade classes
                         if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 5))
