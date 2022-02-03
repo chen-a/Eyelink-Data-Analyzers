@@ -353,6 +353,7 @@ namespace EyelinkFileAnalizer
                 //Checks for the correct file type
                 if ((fileType != ".asc") && (fileType != ".txt"))
                 {
+                    MessageBox.Show("Please Enter Correct File Type\n(.edf converted to .asc)\nForm1.cs:356");
                     DragAndDropTB.Text = string.Empty;
                     return;
                 }
@@ -368,10 +369,10 @@ namespace EyelinkFileAnalizer
                 //Check if data is valid
                 if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
                 {
-                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:371");
-                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:372");
-                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:373");
-                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:374");
+                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:372");
+                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:373");
+                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:374");
+                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:375");
                     progressBar1.Value = 0;
                     DragAndDropTB.Text = string.Empty;
                     return;
@@ -591,13 +592,13 @@ namespace EyelinkFileAnalizer
                 }
                 catch (System.IO.IOException)
                 {
-                    MessageBox.Show("The report .pdf file is already open. \n Close it and try again\nForm1.cs:594");
+                    MessageBox.Show("The report .pdf file is already open. \n Close it and try again\nForm1.cs:595");
                     progressBar1.Value = 0;
                     return;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Non IOException Error\n" + ex.Message + "\nMake sure the ASC file includes velocity data\nForm1.cs:600");
+                    MessageBox.Show("Non IOException Error\n" + ex.Message + "\nMake sure the ASC file includes velocity data\nForm1.cs:601");
                     progressBar1.Value = 0;
                     return;
                 }
@@ -611,22 +612,23 @@ namespace EyelinkFileAnalizer
             //Exception Handelining 
             catch (FileNotFoundException exseption)
             {
-                MessageBox.Show("Error: File Not Found\nForm1.cs:616");
+                MessageBox.Show("Error: File Not Found\nForm1.cs:615");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:622");
+                MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:621");
                 return;
             }
             catch (UnauthorizedAccessException exseption)
             {
-                MessageBox.Show("Error: No Permission To Access The File\nForm1.cs:627");
+                MessageBox.Show("Error: No Permission To Access The File\nForm1.cs:626");
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
         }
+
         // gives the raw velocity over time data in a text file 
         private void AcclerationDataButton_Click(object sender, EventArgs e)
         {
