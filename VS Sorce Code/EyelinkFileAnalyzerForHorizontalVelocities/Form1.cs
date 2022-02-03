@@ -1099,6 +1099,7 @@ namespace EyelinkFileAnalizer
                 }
             }
         }
+
         //Creates 2nd form 
         private void BtnFormTwo_Click(object sender, EventArgs e)
         {
