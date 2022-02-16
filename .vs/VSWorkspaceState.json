@@ -2,10 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\VS Sorce Code",
-    "\\VS Sorce Code\\EyelinkFileAnalyzerForHorizontalVelocities",
-    "\\VS Sorce Code\\EyelinkFileAnalyzerForVerticalVelocities",
+    "\\VS Sorce Code\\smEyelinkFileAnalyzerForHorizontalVelocities",
+    "\\VS Sorce Code\\smEyelinkFileAnalyzerForVerticalVelocities",
     "\\VS Sorce Code\\Test Data"
   ],
-  "SelectedNode": "\\VS Sorce Code\\EyelinkFileAnalyzerForHorizontalVelocities\\Form1.cs",
+  "SelectedNode": "\\VS Sorce Code\\smEyelinkFileAnalyzerForHorizontalVelocities\\EyelinkFileAnalizer.sln",
   "PreviewInSolutionExplorer": false
 }
