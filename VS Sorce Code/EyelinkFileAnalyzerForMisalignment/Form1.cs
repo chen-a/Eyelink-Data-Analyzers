@@ -366,10 +366,11 @@ namespace EyelinkFileAnalizer
 
                         //Find End Saccade data line
                         // Data format: ESACC <Eye Tracked> <STime> <ETime> <Dur> <Sxpos> <Sypos> <Expos> <Eypos> <Ampl> <PeakVel> 
+                        // EFIX <eye> <stime> <etime> <dur> <axp> <ayp> <aps>
                         if ((line.Contains("EFIX R")) && (foundRight == false) && (position != ""))
                         {
                             string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                            if (Convert.ToDouble(splitData[4]) < 500) continue; //stop small fixations
+                            // if (Convert.ToDouble(splitData[4]) < 500) continue; //stop small fixations
                             rightEyePosX = Convert.ToDouble(splitData[5]);
                             rightEyePosY = Convert.ToDouble(splitData[6]);
                             foundRight = true;
@@ -377,7 +378,7 @@ namespace EyelinkFileAnalizer
                         if ((line.Contains("EFIX L")) && (foundLeft == false) && (position != ""))
                         {
                             string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                            if (Convert.ToDouble(splitData[4]) < 500) continue; //stop small fixations
+                            // if (Convert.ToDouble(splitData[4]) < 500) continue; //stop small fixations
                             leftEyePosX = Convert.ToDouble(splitData[5]);
                             leftEyePosY = Convert.ToDouble(splitData[6]);
                             foundLeft = true;

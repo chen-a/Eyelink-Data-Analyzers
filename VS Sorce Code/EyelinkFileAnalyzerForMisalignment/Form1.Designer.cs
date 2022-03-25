@@ -50,7 +50,7 @@
             this.DragAndDropTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DragAndDropTB.Location = new System.Drawing.Point(9, 101);
-            this.DragAndDropTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DragAndDropTB.Margin = new System.Windows.Forms.Padding(2);
             this.DragAndDropTB.Multiline = true;
             this.DragAndDropTB.Name = "DragAndDropTB";
             this.DragAndDropTB.Size = new System.Drawing.Size(609, 80);
@@ -72,7 +72,7 @@
             // 
             this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StartButton.Location = new System.Drawing.Point(272, 183);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(2);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(170, 26);
             this.StartButton.TabIndex = 2;
@@ -116,7 +116,7 @@
             // ClearButton
             // 
             this.ClearButton.Location = new System.Drawing.Point(140, 184);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(127, 25);
             this.ClearButton.TabIndex = 11;
@@ -127,7 +127,7 @@
             // ChooseFileBT
             // 
             this.ChooseFileBT.Location = new System.Drawing.Point(9, 183);
-            this.ChooseFileBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChooseFileBT.Margin = new System.Windows.Forms.Padding(2);
             this.ChooseFileBT.Name = "ChooseFileBT";
             this.ChooseFileBT.Size = new System.Drawing.Size(127, 26);
             this.ChooseFileBT.TabIndex = 20;
@@ -138,7 +138,7 @@
             // resultsTB
             // 
             this.resultsTB.Location = new System.Drawing.Point(9, 241);
-            this.resultsTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resultsTB.Margin = new System.Windows.Forms.Padding(2);
             this.resultsTB.Multiline = true;
             this.resultsTB.Name = "resultsTB";
             this.resultsTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -153,21 +153,21 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(372, 16);
             this.label1.TabIndex = 22;
-            this.label1.Text = "Enter eye to screen distance in millimeters (default is 770mm): ";
+            this.label1.Text = "Enter eye to screen distance in millimeters (default is 790mm): ";
             // 
             // eyeToScreenTB
             // 
             this.eyeToScreenTB.Location = new System.Drawing.Point(407, 213);
-            this.eyeToScreenTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.eyeToScreenTB.Margin = new System.Windows.Forms.Padding(2);
             this.eyeToScreenTB.Name = "eyeToScreenTB";
             this.eyeToScreenTB.Size = new System.Drawing.Size(81, 22);
             this.eyeToScreenTB.TabIndex = 23;
-            this.eyeToScreenTB.Text = "770";
+            this.eyeToScreenTB.Text = "790";
             // 
             // CreateReportBT
             // 
             this.CreateReportBT.Location = new System.Drawing.Point(447, 184);
-            this.CreateReportBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CreateReportBT.Margin = new System.Windows.Forms.Padding(2);
             this.CreateReportBT.Name = "CreateReportBT";
             this.CreateReportBT.Size = new System.Drawing.Size(169, 25);
             this.CreateReportBT.TabIndex = 24;
@@ -192,7 +192,7 @@
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.Instructions);
             this.Controls.Add(this.DragAndDropTB);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(655, 476);
             this.MinimumSize = new System.Drawing.Size(655, 476);
             this.Name = "Form1";
