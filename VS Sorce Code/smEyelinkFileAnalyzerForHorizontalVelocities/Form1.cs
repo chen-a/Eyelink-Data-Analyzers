@@ -373,9 +373,9 @@ namespace EyelinkFileAnalizer
                     else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:373");
                     else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:374");
                     else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:375");
-                    progressBar1.Value = 0;
+                    /* progressBar1.Value = 0;
                     DragAndDropTB.Text = string.Empty;
-                    return;
+                    return; */
                 }
                 //get sample data 
                 List<List<double>> horizontalVelocitiesOverTimeRightEyeAbd = new List<List<double>>();
