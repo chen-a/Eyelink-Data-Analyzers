@@ -100,12 +100,12 @@ namespace EyelinkFileAnalizer
                         // get average Velocity
                         averageVelocity = amplitude / (duration / 1000);
 
-                        if ((startXPosition > 1720) && (startXPosition < 2120)) direction = "Center To ";
-                        if (startXPosition > 2120) direction = "Right To ";
-                        if (startXPosition < 1720) direction = "Left To ";
-                        if ((endXPosition > 1720) && (endXPosition < 2120)) direction += "Center";
-                        if (endXPosition > 2120) direction += "Right";
-                        if (endXPosition < 1720) direction += "Left";
+                        if ((startXPosition > 440) && (startXPosition < 840)) direction = "Center To ";
+                        if (startXPosition > 840) direction = "Right To ";
+                        if (startXPosition < 440) direction = "Left To ";
+                        if ((endXPosition > 440) && (endXPosition < 840)) direction += "Center";
+                        if (endXPosition > 840) direction += "Right";
+                        if (endXPosition < 440) direction += "Left";
 
                         //add to appropriate list of Saccade classes
                         if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 5))
@@ -374,22 +374,22 @@ namespace EyelinkFileAnalizer
                 //Check if data is valid
                 if (rightEyeAbductions.Count == 0)
                 {
-                    MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:372");
+                    MessageBox.Show("Warninig:\nNo Right Eye Abductions Detected\nForm1.cs:372");
                     rEAbductionsEmpty = true;
                 }
                 if (rightEyeAdductions.Count == 0)
                 {
-                    MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:373");
+                    MessageBox.Show("Warning:\nNo Right Eye Adductions Detected\nForm1.cs:373");
                     rEAdductionsEmpty = true;
                 }
                 if (leftEyeAbductions.Count == 0)
                 {
-                    MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:374");
+                    MessageBox.Show("Warning:\nNo Left Eye Abductions Detected\nForm1.cs:374");
                     lEAbductionsEmpty = true;
                 }
                 if (leftEyeAdductions.Count == 0)
                 {
-                    MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:375");
+                    MessageBox.Show("Warning:\nNo Left Eye Adductions Detected\nForm1.cs:375");
                     lEAdductionsEmpty = true;
                 }
                     //progressBar1.Value = 0;
@@ -406,8 +406,8 @@ namespace EyelinkFileAnalizer
                 if (!rEAdductionsEmpty) RightSampleReader(ref rightEyeAdductions, ref horizontalVelocitiesOverTimeRightEyeAdd);
                 if (!lEAbductionsEmpty) LeftSampleReader(ref leftEyeAbductions, ref horizontalVelocitiesOverTimeLeftEyeAbd);
                 if (!lEAdductionsEmpty) LeftSampleReader(ref leftEyeAdductions, ref horizontalVelocitiesOverTimeLeftEyeAdd);
-
-                //GetSampleData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions, ref horizontalVelocitiesOverTimeRightEyeAbd, ref horizontalVelocitiesOverTimeRightEyeAdd, ref horizontalVelocitiesOverTimeLeftEyeAbd, ref horizontalVelocitiesOverTimeLeftEyeAdd);
+                
+                // GetSampleData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions, ref horizontalVelocitiesOverTimeRightEyeAbd, ref horizontalVelocitiesOverTimeRightEyeAdd, ref horizontalVelocitiesOverTimeLeftEyeAbd, ref horizontalVelocitiesOverTimeLeftEyeAdd);
                 //Declaration of averageList
                 List<double> averageList = new List<double>();
                 progressBar1.Value = 7;
@@ -467,8 +467,6 @@ namespace EyelinkFileAnalizer
                         chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
                         gif = Image.GetInstance(imagePath);
                         doc.Add(gif);
-                        progressBar1.Value += 8;
-
                         doc.NewPage();
                     }
                     else
@@ -546,7 +544,6 @@ namespace EyelinkFileAnalizer
 
                         if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAbd);
                         averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAbd);
-
                         double peakValue = FindPeakValue(averageList);
                         doc.Add(new Paragraph("Average Velocity: " + (-1 * Math.Round(averageTotal, 2)) + " degrees/second\n"));
                         doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(leftEyeAbductions), 2) + " degrees\n"));
@@ -639,7 +636,6 @@ namespace EyelinkFileAnalizer
                     {
                         doc.Add(new Paragraph("Error: No Left Eye Adductions Found"));
                     }
-                    progressBar1.Value += 7;
                     //delete image file used to crate pdf
                     File.Delete(imagePath);
                     progressBar1.Value = 0;
@@ -650,12 +646,12 @@ namespace EyelinkFileAnalizer
                     progressBar1.Value = 0;
                     return;
                 }
-                catch (Exception ex)
+                /*catch (Exception ex)
                 {
                     MessageBox.Show("Non IOException Error\n" + ex.Message + "\nMake sure the ASC file includes velocity data\nForm1.cs:601");
                     progressBar1.Value = 0;
                     return;
-                }
+                }*/
                 finally
                 {
                     doc.Close();
@@ -670,11 +666,11 @@ namespace EyelinkFileAnalizer
                 DragAndDropTB.Text = string.Empty;
                 return;
             }
-            catch (ArgumentException)
+            /*catch (ArgumentException)
             {
                 MessageBox.Show("Error: Please Enter A Valid File\nForm1.cs:621");
                 return;
-            }
+            }*/
             catch (UnauthorizedAccessException exseption)
             {
                 MessageBox.Show("Error: No Permission To Access The File\nForm1.cs:626");
@@ -880,6 +876,7 @@ namespace EyelinkFileAnalizer
         //remeoves werid data and the minimum timed value
         private void RemoveOutliers(ref List<List<Double>> listToCheck)
         {
+            if (listToCheck.Count == 0) return;
             for (int i = 0; i < listToCheck.Count; i++)
             {
                 if (listToCheck[i].Count < 2)
