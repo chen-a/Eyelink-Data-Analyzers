@@ -364,26 +364,50 @@ namespace EyelinkFileAnalizer
                 List<Saccade> rightEyeAdductions = new List<Saccade>();
                 List<Saccade> leftEyeAbductions = new List<Saccade>();
                 List<Saccade> leftEyeAdductions = new List<Saccade>();
-                
+
+                bool rEAbductionsEmpty = false;
+                bool rEAdductionsEmpty = false;
+                bool lEAbductionsEmpty = false;
+                bool lEAdductionsEmpty = false;
+
                 GetEndSaccadeData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions);
                 //Check if data is valid
-                if ((rightEyeAbductions.Count == 0) || (rightEyeAdductions.Count == 0) || (leftEyeAbductions.Count == 0) || (leftEyeAdductions.Count == 0))
+                if (rightEyeAbductions.Count == 0)
                 {
-                    if (rightEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Abductions Detected\nForm1.cs:372");
-                    else if (rightEyeAdductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Right Eye Adductions Detected\nForm1.cs:373");
-                    else if (leftEyeAbductions.Count == 0) MessageBox.Show("File Cannot Be Analyzed\nNo Left Eye Abductions Detected\nForm1.cs:374");
-                    else MessageBox.Show("File Cannot be Analyzed\nNo Left Eye Adductions Detected\nForm1.cs:375");
-                    /* progressBar1.Value = 0;
-                    DragAndDropTB.Text = string.Empty;
-                    return; */
+                    MessageBox.Show("Warning:\nNo Right Eye Abductions Detected\nForm1.cs:372");
+                    rEAbductionsEmpty = true;
                 }
+                if (rightEyeAdductions.Count == 0)
+                {
+                    MessageBox.Show("Warning:\nNo Right Eye Adductions Detected\nForm1.cs:373");
+                    rEAdductionsEmpty = true;
+                }
+                if (leftEyeAbductions.Count == 0)
+                {
+                    MessageBox.Show("Warning:\nNo Left Eye Abductions Detected\nForm1.cs:374");
+                    lEAbductionsEmpty = true;
+                }
+                if (leftEyeAdductions.Count == 0)
+                {
+                    MessageBox.Show("Warning:\nNo Left Eye Adductions Detected\nForm1.cs:375");
+                    lEAdductionsEmpty = true;
+                }
+                /* progressBar1.Value = 0;
+                DragAndDropTB.Text = string.Empty;
+                return; */
+
                 //get sample data 
                 List<List<double>> horizontalVelocitiesOverTimeRightEyeAbd = new List<List<double>>();
                 List<List<double>> horizontalVelocitiesOverTimeRightEyeAdd = new List<List<double>>();
                 List<List<double>> horizontalVelocitiesOverTimeLeftEyeAbd = new List<List<double>>();
                 List<List<double>> horizontalVelocitiesOverTimeLeftEyeAdd = new List<List<double>>();
-                
-                GetSampleData(ref rightEyeAbductions, ref rightEyeAdductions, ref leftEyeAbductions, ref leftEyeAdductions, ref horizontalVelocitiesOverTimeRightEyeAbd, ref horizontalVelocitiesOverTimeRightEyeAdd, ref horizontalVelocitiesOverTimeLeftEyeAbd, ref horizontalVelocitiesOverTimeLeftEyeAdd);
+
+                if (!rEAbductionsEmpty) RightSampleReader(ref rightEyeAbductions, ref horizontalVelocitiesOverTimeRightEyeAbd);
+                if (!rEAdductionsEmpty) RightSampleReader(ref rightEyeAdductions, ref horizontalVelocitiesOverTimeRightEyeAdd);
+                if (!lEAbductionsEmpty) LeftSampleReader(ref leftEyeAbductions, ref horizontalVelocitiesOverTimeLeftEyeAbd);
+                if (!lEAdductionsEmpty) LeftSampleReader(ref leftEyeAdductions, ref horizontalVelocitiesOverTimeLeftEyeAdd);
+
+
                 //Declaration of averageList
                 List<double> averageList = new List<double>();
                 progressBar1.Value = 7;
@@ -394,198 +418,225 @@ namespace EyelinkFileAnalizer
                 {
                     PdfWriter.GetInstance(doc, new FileStream(pdfPath, FileMode.Create));
                     doc.Open();
-                    
+
                     //RIGHT EYE ABDUCTION
                     doc.Add(new Paragraph("Right Eye Abduction: \n"));
-                    double rightEyeAdbTotal = 0;
-                    for (int i = 0; i < rightEyeAbductions.Count; i++)
-                    {
-                        rightEyeAdbTotal += rightEyeAbductions[i].getAverageVelocity();
+                    if (!rEAbductionsEmpty) 
+                    { 
+                        double rightEyeAdbTotal = 0;
+                        for (int i = 0; i < rightEyeAbductions.Count; i++)
+                        {
+                            rightEyeAdbTotal += rightEyeAbductions[i].getAverageVelocity();
+                        }
+                        rightEyeAdbTotal /= rightEyeAbductions.Count;
+                        //calculate peak velocity based on graph data 
+                        if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeRightEyeAbd);
+                        averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeRightEyeAbd);
+                        double peakValue = FindPeakValue(averageList);
+                        //Output variables
+                        doc.Add(new Paragraph("Average Velocity: " + Math.Round(rightEyeAdbTotal, 2) + " degrees/second\n"));
+                        doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(rightEyeAbductions), 2) + " degrees\n"));
+                        doc.Add(new Paragraph("Peak Velocity of Average Curve: " + Math.Round(peakValue, 2) + " degrees/second\n"));
+                        //Calculate Standard Divation
+                        double standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeRightEyeAbd);
+                        doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
+
+                        //get sets graph
+                        comboBox1.Text = "Right Eye Abductions";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        Image gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+                        //get average graph
+                        comboBox1.Text = "Right Eye Average Abduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+
+                        doc.NewPage();
+                        //Print Acceleration Graph
+                        KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
+                        peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
+                        doc.Add(new Paragraph("Peak Acceleration: " + peakAccelerationDataPoint.Value + " degrees/second^2\n"));
+                        doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
+
+                        //get accelration graph
+                        comboBox1.Text = "Right Eye Average Acceleration Abduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        doc.NewPage();
                     }
-                    rightEyeAdbTotal /= rightEyeAbductions.Count;
-                    //calculate peak velocity based on graph data 
-                    if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeRightEyeAbd);
-                    averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeRightEyeAbd);
-                    double peakValue = FindPeakValue(averageList);
-                    //Output variables
-                    doc.Add(new Paragraph("Average Velocity: " + Math.Round(rightEyeAdbTotal, 2) + " degrees/second\n"));
-                    doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(rightEyeAbductions), 2) + " degrees\n"));
-                    doc.Add(new Paragraph("Peak Velocity of Average Curve: " + Math.Round(peakValue, 2) + " degrees/second\n"));
-                    //Calculate Standard Divation
-                    double standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeRightEyeAbd);
-                    doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
-                    
-                    //get sets graph
-                    comboBox1.Text = "Right Eye Abductions";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    Image gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
+                    else
+                    {
+                        doc.Add(new Paragraph("Error: No Right Eye Abductions Found"));
+                    }
                     progressBar1.Value += 8;
-                    //get average graph
-                    comboBox1.Text = "Right Eye Average Abduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-
-                    doc.NewPage();
-                    //Print Acceleration Graph
-                    KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
-                    peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
-                    doc.Add(new Paragraph("Peak Acceleration: " + peakAccelerationDataPoint.Value + " degrees/second^2\n"));
-                    doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
-
-                    //get accelration graph
-                    comboBox1.Text = "Right Eye Average Acceleration Abduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-
                     doc.NewPage();
 
                     //RIGHT EYE ADDUCTION
                     doc.Add(new Paragraph("Right Eye Adduction:"));
-
-                    double averageTotal = 0;
-                    for (int i = 0; i < rightEyeAdductions.Count; i++)
+                    doc.Add(new Paragraph("Right Eye Adduction:"));
+                    if (!rEAdductionsEmpty)
                     {
-                        averageTotal += rightEyeAdductions[i].getAverageVelocity();
+                        double averageTotal = 0;
+                        for (int i = 0; i < rightEyeAdductions.Count; i++)
+                        {
+                            averageTotal += rightEyeAdductions[i].getAverageVelocity();
+                        }
+                        averageTotal /= rightEyeAdductions.Count;
+
+                        if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeRightEyeAdd);
+                        averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeRightEyeAdd);
+
+                        double peakValue = FindPeakValue(averageList);
+                        doc.Add(new Paragraph("Average Velocity: " + (-1 * Math.Round(averageTotal, 2)) + " degrees/second\n"));
+                        doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(rightEyeAdductions), 2) + " degrees\n"));
+                        doc.Add(new Paragraph("Peak Velocity of Average Curve: " + (-1 * Math.Round(peakValue, 2)) + " degrees/second\n"));
+                        //Calculate Standard Divation
+                        double standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeRightEyeAdd);
+                        doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
+
+                        //get sets graph
+                        comboBox1.Text = "Right Eye Adductions";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        Image gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+                        //get average graph
+                        comboBox1.Text = "Right Eye Average Adduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+
+                        doc.NewPage();
+                        //Print Acceleration Graph
+                        KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
+                        peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
+                        doc.Add(new Paragraph("Peak Acceleration: " + (-1 * peakAccelerationDataPoint.Value) + " degrees/second^2\n"));
+                        doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
+
+                        //get accelration graph
+                        comboBox1.Text = "Right Eye Average Acceleration Adduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
                     }
-                    averageTotal /= rightEyeAdductions.Count;
-
-                    if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeRightEyeAdd);
-                    averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeRightEyeAdd);
-
-                    peakValue = FindPeakValue(averageList);
-                    doc.Add(new Paragraph("Average Velocity: " + (-1 * Math.Round(averageTotal, 2)) + " degrees/second\n"));
-                    doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(rightEyeAdductions), 2) + " degrees\n"));
-                    doc.Add(new Paragraph("Peak Velocity of Average Curve: " + (-1 * Math.Round(peakValue, 2)) + " degrees/second\n"));
-                    //Calculate Standard Divation
-                    standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeRightEyeAdd);
-                    doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
-
-                    //get sets graph
-                    comboBox1.Text = "Right Eye Adductions";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
+                    else
+                    {
+                        doc.Add(new Paragraph("Error: No Right Eye Adductions Found"));
+                    }
                     progressBar1.Value += 8;
-                    //get average graph
-                    comboBox1.Text = "Right Eye Average Adduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-
                     doc.NewPage();
-                    //Print Acceleration Graph
-                    peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
-                    doc.Add(new Paragraph("Peak Acceleration: " + (-1 * peakAccelerationDataPoint.Value) + " degrees/second^2\n"));
-                    doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
 
-                    //get accelration graph
-                    comboBox1.Text = "Right Eye Average Acceleration Adduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-
-                    doc.NewPage();
                     //LEFT EYE ABDUCTION
                     doc.Add(new Paragraph("Left Eye Abduction:"));
-
-                    averageTotal = 0;
-                    for (int i = 0; i < leftEyeAbductions.Count; i++)
+                    if (!lEAbductionsEmpty)
                     {
-                        averageTotal += leftEyeAbductions[i].getAverageVelocity();
+                        double averageTotal = 0;
+                        for (int i = 0; i < leftEyeAbductions.Count; i++)
+                        {
+                            averageTotal += leftEyeAbductions[i].getAverageVelocity();
+                        }
+                        averageTotal /= leftEyeAbductions.Count;
+
+                        if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAbd);
+                        averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAbd);
+                        double peakValue = FindPeakValue(averageList);
+                        doc.Add(new Paragraph("Average Velocity: " + (-1 * Math.Round(averageTotal, 2)) + " degrees/second\n"));
+                        doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(leftEyeAbductions), 2) + " degrees\n"));
+                        doc.Add(new Paragraph("Peak Velocity of Average Curve: " + (-1 * Math.Round(peakValue, 2)) + " degrees/second\n"));
+                        //Calculate Standard Divation
+                        double standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeLeftEyeAbd);
+                        doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
+                        //get sets graph
+                        comboBox1.Text = "Left Eye Abductions";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        Image gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+                        //get average graph
+                        comboBox1.Text = "Left Eye Average Abduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+
+                        doc.NewPage();
+                        //Print Acceleration Graph
+                        KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
+                        peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
+                        doc.Add(new Paragraph("Peak Acceleration: " + (-1 * peakAccelerationDataPoint.Value) + " degrees/second^2\n"));
+                        doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
+
+                        //get accelration graph
+                        comboBox1.Text = "Left Eye Average Acceleration Abduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
                     }
-                    averageTotal /= leftEyeAbductions.Count;
-
-                    if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAbd);
-                    averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAbd);
-
-                    peakValue = FindPeakValue(averageList);
-                    doc.Add(new Paragraph("Average Velocity: " + (-1 * Math.Round(averageTotal, 2)) + " degrees/second\n"));
-                    doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(leftEyeAbductions), 2) + " degrees\n"));
-                    doc.Add(new Paragraph("Peak Velocity of Average Curve: " + (-1 * Math.Round(peakValue, 2)) + " degrees/second\n"));
-                    //Calculate Standard Divation
-                    standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeLeftEyeAbd);
-                    doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
-                    //get sets graph
-                    comboBox1.Text = "Left Eye Abductions";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-                    //get average graph
-                    comboBox1.Text = "Left Eye Average Abduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-
-                    doc.NewPage();
-                    //Print Acceleration Graph
-                    peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
-                    doc.Add(new Paragraph("Peak Acceleration: " + (-1 * peakAccelerationDataPoint.Value) + " degrees/second^2\n"));
-                    doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
-
-                    //get accelration graph
-                    comboBox1.Text = "Left Eye Average Acceleration Abduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
+                    else
+                    {
+                        doc.Add(new Paragraph("Error: No Left Eye Abductions Found"));
+                    }
                     progressBar1.Value += 7;
-                    
                     doc.NewPage();
+
                     //LEFT EYE ADDUCTION
                     doc.Add(new Paragraph("Left Eye Adduction:"));
-
-                    averageTotal = 0;
-                    for (int i = 0; i < leftEyeAdductions.Count; i++)
+                    doc.Add(new Paragraph("Left Eye Adduction:"));
+                    if (!lEAdductionsEmpty)
                     {
-                        averageTotal += leftEyeAdductions[i].getAverageVelocity();
+                        double averageTotal = 0;
+                        for (int i = 0; i < leftEyeAdductions.Count; i++)
+                        {
+                            averageTotal += leftEyeAdductions[i].getAverageVelocity();
+                        }
+                        averageTotal /= leftEyeAdductions.Count;
+
+                        if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAdd);
+                        averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAdd);
+
+                        double peakValue = FindPeakValue(averageList);
+                        doc.Add(new Paragraph("Average Velocity: " + Math.Round(averageTotal, 2) + " degrees/second\n"));
+                        doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(leftEyeAdductions), 2) + " degrees\n"));
+                        doc.Add(new Paragraph("Peak Velocity of Average Curve: " + Math.Round(peakValue, 2) + " degrees/second\n"));
+                        //Calculate Standard Divation
+                        double standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeLeftEyeAdd);
+                        doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
+
+                        //get sets graph
+                        comboBox1.Text = "Left Eye Adductions";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        Image gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 8;
+                        //get average graph
+                        comboBox1.Text = "Left Eye Average Adduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
+                        progressBar1.Value += 7;
+
+                        doc.NewPage();
+                        //Print Acceleration Graph
+                        KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
+                        peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
+                        doc.Add(new Paragraph("Peak Acceleration: " + peakAccelerationDataPoint.Value + " degrees/second^2\n"));
+                        doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
+
+                        //get accelration graph
+                        comboBox1.Text = "Left Eye Average Acceleration Adduction";
+                        chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
+                        gif = Image.GetInstance(imagePath);
+                        doc.Add(gif);
                     }
-                    averageTotal /= leftEyeAdductions.Count;
-
-                    if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAdd);
-                    averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAdd);
-
-                    peakValue = FindPeakValue(averageList);
-                    doc.Add(new Paragraph("Average Velocity: " + Math.Round(averageTotal, 2) + " degrees/second\n"));
-                    doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(leftEyeAdductions), 2) + " degrees\n"));
-                    doc.Add(new Paragraph("Peak Velocity of Average Curve: " + Math.Round(peakValue, 2) + " degrees/second\n"));
-                    //Calculate Standard Divation
-                    standardDeviation = FindPeakVelocityStandardDivation(horizontalVelocitiesOverTimeLeftEyeAdd);
-                    doc.Add(new Paragraph("Peak Velocity Standard Deviation: " + Math.Round(standardDeviation, 2)));
-                   
-                    //get sets graph
-                    comboBox1.Text = "Left Eye Adductions";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 8;
-                    //get average graph
-                    comboBox1.Text = "Left Eye Average Adduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 7;
-                    
-                    doc.NewPage();
-                    //Print Acceleration Graph
-                    peakAccelerationDataPoint = GetPeakAccelerationPoint(averageList);
-                    doc.Add(new Paragraph("Peak Acceleration: " + peakAccelerationDataPoint.Value + " degrees/second^2\n"));
-                    doc.Add(new Paragraph("Time At Peak Acceleration: " + peakAccelerationDataPoint.Key + " milliseconds\n"));
-
-                    //get accelration graph
-                    comboBox1.Text = "Left Eye Average Acceleration Adduction";
-                    chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
-                    gif = Image.GetInstance(imagePath);
-                    doc.Add(gif);
-                    progressBar1.Value += 7;
-
+                    else
+                    {
+                        doc.Add(new Paragraph("Error: No Left Eye Adductions Found"));
+                    }
                     //delete image file used to crate pdf
                     File.Delete(imagePath);
                     progressBar1.Value = 0;
