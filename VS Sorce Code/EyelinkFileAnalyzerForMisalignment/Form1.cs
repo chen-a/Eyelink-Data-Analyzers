@@ -45,10 +45,10 @@ namespace EyelinkFileAnalizer
             bool leftUp = false;
             
 
-            if ((eyePositionClass.getRightEyeXPos() < eyePositionClass.getLeftEyeXPos())) eyesCrossed = true;
-            if ((eyePositionClass.getRightEyeXPos() > eyePositionClass.getLeftEyeXPos())) wallEyes = true;
-            if ((eyePositionClass.getRightEyeYPos() < eyePositionClass.getLeftEyeYPos())) leftUp = true;
-            if ((eyePositionClass.getRightEyeYPos() > eyePositionClass.getLeftEyeYPos())) rightUp = true;
+            if ((eyePositionClass.getRightEyeXPos() < eyePositionClass.getLeftEyeXPos())) eyesCrossed = true; // esotropia
+            if ((eyePositionClass.getRightEyeXPos() > eyePositionClass.getLeftEyeXPos())) wallEyes = true; // exotropia
+            if ((eyePositionClass.getRightEyeYPos() < eyePositionClass.getLeftEyeYPos())) leftUp = true; // hypertropia
+            if ((eyePositionClass.getRightEyeYPos() > eyePositionClass.getLeftEyeYPos())) rightUp = true; // hypertropia
 
             //find distance between eyes
             double horizontalDistance = Math.Sqrt(Math.Pow((eyePositionClass.getLeftEyeXPos() - eyePositionClass.getRightEyeXPos()), 2));
