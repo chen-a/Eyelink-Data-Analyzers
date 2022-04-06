@@ -54,7 +54,6 @@ C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFi
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\bin\Debug\itextsharp.dll
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\bin\Debug\EPPlus.xml
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\bin\Debug\itextsharp.xml
-C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.AssemblyReference.cache
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.SuggestedBindingRedirects.cache
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.Form1.resources
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.Form2.resources
@@ -64,3 +63,4 @@ C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFi
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.CopyComplete
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.exe
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.pdb
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.AssemblyReference.cache
