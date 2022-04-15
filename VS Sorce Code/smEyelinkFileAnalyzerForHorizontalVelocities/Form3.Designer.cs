@@ -105,11 +105,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 136);
+            this.label4.Location = new System.Drawing.Point(60, 136);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 16);
+            this.label4.Size = new System.Drawing.Size(347, 16);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Click Save and Exit to Close";
+            this.label4.Text = "Note: Click Save and Exit to Close. Do not click X to close.";
             // 
             // Form3
             // 

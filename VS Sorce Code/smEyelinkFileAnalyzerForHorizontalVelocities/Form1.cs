@@ -130,7 +130,7 @@ namespace EyelinkFileAnalizer
                         //add to appropriate list of Saccade classes
                         if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 2))
                         {
-                            MessageBox.Show("REAbd: ESACC " + eyeTracked + " " + startTime);
+                            //MessageBox.Show("REAbd: ESACC " + eyeTracked + " " + startTime);
                             rightEyeAbductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
