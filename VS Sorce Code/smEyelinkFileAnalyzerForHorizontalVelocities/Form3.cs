@@ -20,11 +20,5 @@ namespace EyelinkFileAnalizer
         {
             this.Hide();
         }
-
-        private void Form3_FormClosing (object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            e.Cancel = true;
-        }
     }
 }
