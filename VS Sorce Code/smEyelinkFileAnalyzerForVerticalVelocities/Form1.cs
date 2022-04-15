@@ -746,9 +746,9 @@ namespace EyelinkFileAnalizer
                         progressBar1.Value = 0;
                         return;
                     }
-                    catch (Exception)
+                    catch (Exception exc)
                     {
-                        MessageBox.Show("Non IOEXCeption Error\nForm1.cs:703");
+                        MessageBox.Show("Non IOEXCeption Error\n" + exc + "\nForm1.cs:703");
                         progressBar1.Value = 0;
                         return;
                     }

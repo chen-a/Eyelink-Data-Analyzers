@@ -49,7 +49,7 @@ namespace EyelinkFileAnalizer
                     // Data format: ESACC <Eye Tracked> <STime> <ETime> <Dur> <Sxpos> <Sypos> <Expos> <Eypos> <Ampl> <PeakVel> 
                     if (line.Contains("ESACC"))
                     {
-
+                        
                         string eyeTracked = "";
                         double startTime = 0;
                         double endTime = 0;
@@ -92,42 +92,46 @@ namespace EyelinkFileAnalizer
                         if (splitData[8] == ".") endYPosition = 0;
                         else endYPosition = Convert.ToDouble(splitData[8]);
                         if (splitData[9] == ".") amplitude = 0;
-                        else if (Convert.ToDouble(splitData[9]) > 45) amplitude = 0;
+                        //else if (Convert.ToDouble(splitData[9]) > 45) amplitude = 0;
                         else amplitude = Convert.ToDouble(splitData[9]);
                         if (splitData[10] == ".") peakVelocity = 0;
                         else peakVelocity = Convert.ToDouble(splitData[10]);
 
                         // get average Velocity
                         averageVelocity = amplitude / (duration / 1000);
-
-                        if ((startXPosition > 440) && (startXPosition < 840)) direction = "Center To ";
-                        if (startXPosition > 840) direction = "Right To ";
-                        if (startXPosition < 440) direction = "Left To ";
-                        if ((endXPosition > 440) && (endXPosition < 840)) direction += "Center";
-                        if (endXPosition > 840) direction += "Right";
-                        if (endXPosition < 440) direction += "Left";
+                        // Mid = 440 - 840
+                        if ((startXPosition > 480) && (startXPosition < 800)) direction = "Center To ";
+                        if (startXPosition > 800) direction = "Right To ";
+                        if (startXPosition < 480) direction = "Left To ";
+                        if ((endXPosition > 480) && (endXPosition < 800)) direction += "Center";
+                        if (endXPosition > 800) direction += "Right";
+                        if (endXPosition < 480) direction += "Left";
 
                         //add to appropriate list of Saccade classes
-                        if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 5))
+                        if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 2))
                         {
+                            //MessageBox.Show("REAbd: ESACC " + eyeTracked + " " + startTime);
                             rightEyeAbductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
                         if ((eyeTracked == "Right") && (direction == "Center To Left") && (amplitude > 5))
                         {
+                            //MessageBox.Show("REAdd: ESACC " + eyeTracked + " " + startTime);
                             rightEyeAdductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
                         if ((eyeTracked == "Left") && (direction == "Center To Left") && (amplitude > 5))
                         {
+                            //MessageBox.Show("LEAbd: ESACC " + eyeTracked + " " + startTime);
                             leftEyeAbductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
                         if ((eyeTracked == "Left") && (direction == "Center To Right") && (amplitude > 5))
                         {
+                            //MessageBox.Show("LEAdd: ESACC " + eyeTracked + " " + startTime);
                             leftEyeAdductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
@@ -158,8 +162,9 @@ namespace EyelinkFileAnalizer
                         string[] splitData = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                         //Weed out lines that are not samples to find ones that begin saccades
                         if ((splitData.Length < 11) || (splitData[0] != Convert.ToString(listToRead[i].getStartTime()))) continue;
-                        else
-                        {     
+               
+                          else
+                        {
                             List<double> sublist = new List<double>();//must create sublist to properly add to a list of lists
                             bool keepGoing = true;
                             while (keepGoing)
@@ -476,7 +481,6 @@ namespace EyelinkFileAnalizer
 
                     //RIGHT EYE ADDUCTION
                     doc.Add(new Paragraph("Right Eye Adduction:"));
-                    doc.Add(new Paragraph("Right Eye Adduction:"));
                     if (!rEAdductionsEmpty)
                     {
                         double averageTotal = 0;
@@ -540,10 +544,10 @@ namespace EyelinkFileAnalizer
                             averageTotal += leftEyeAbductions[i].getAverageVelocity();
                         }
                         averageTotal /= leftEyeAbductions.Count;
-
                         if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAbd);
                         averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAbd);
                         double peakValue = FindPeakValue(averageList);
+                        
                         doc.Add(new Paragraph("Average Velocity: " + (-1 * Math.Round(averageTotal, 2)) + " degrees/second\n"));
                         doc.Add(new Paragraph("Average Amplitude: " + Math.Round(GetAverageAmplitude(leftEyeAbductions), 2) + " degrees\n"));
                         doc.Add(new Paragraph("Peak Velocity of Average Curve: " + (-1 * Math.Round(peakValue, 2)) + " degrees/second\n"));
@@ -585,7 +589,6 @@ namespace EyelinkFileAnalizer
 
                     //LEFT EYE ADDUCTION
                     doc.Add(new Paragraph("Left Eye Adduction:"));
-                    doc.Add(new Paragraph("Left Eye Adduction:"));
                     if (!lEAdductionsEmpty)
                     {
                         double averageTotal = 0;
@@ -593,10 +596,13 @@ namespace EyelinkFileAnalizer
                         {
                             averageTotal += leftEyeAdductions[i].getAverageVelocity();
                         }
+                        MessageBox.Show("ag1");
                         averageTotal /= leftEyeAdductions.Count;
-
+                        MessageBox.Show("ag2");
                         if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAdd);
+                        MessageBox.Show("ag3");
                         averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAdd);
+                        MessageBox.Show("ag4");
 
                         double peakValue = FindPeakValue(averageList);
                         doc.Add(new Paragraph("Average Velocity: " + Math.Round(averageTotal, 2) + " degrees/second\n"));
@@ -876,55 +882,59 @@ namespace EyelinkFileAnalizer
         //remeoves werid data and the minimum timed value
         private void RemoveOutliers(ref List<List<Double>> listToCheck)
         {
-            for (int i = 0; i < listToCheck.Count; i++)
+            //MessageBox.Show("array size = " + listToCheck.Count);
+            if (listToCheck.Count > 3)
             {
-                if (listToCheck[i].Count < 2)
+                for (int i = 0; i < listToCheck.Count; i++)
                 {
-                    listToCheck.RemoveAt(i);
-                    i--;
+                    //MessageBox.Show("array[" + i + "] = " + listToCheck[i].Count);
+                    if (listToCheck[i].Count < 2)
+                    {
+                        listToCheck.RemoveAt(i);
+                        i--;
+                    }
+                    double lastPoint = listToCheck[i][(listToCheck[i].Count - 1)];
+                    double secondToLast = listToCheck[i][(listToCheck[i].Count - 2)];
+                    double diffrence = secondToLast - lastPoint;
+                    //make positive
+                    if (diffrence < 0) diffrence *= -1;
+                    if (diffrence > 100)
+                    {
+                        listToCheck.RemoveAt(i);
+                        i--;
+                    }
                 }
-                double lastPoint = listToCheck[i][(listToCheck[i].Count - 1)];
-                double secondToLast = listToCheck[i][(listToCheck[i].Count - 2)];
-                double diffrence = secondToLast - lastPoint;
-                //make positive
-                if (diffrence < 0) diffrence *= -1;
-                if (diffrence > 100)
+                //Remove Min set 
+                int minIndex = 0;
+                int minVal = listToCheck[0].Count;
+                for (int i = 0; i < listToCheck.Count; i++)
                 {
-                    listToCheck.RemoveAt(i);
-                    i--;
+                    if (minVal > listToCheck[i].Count)
+                    {
+                        minVal = listToCheck[i].Count;
+                        minIndex = i;
+                    }
                 }
+                listToCheck.RemoveAt(minIndex);
+                //Remove Max set
+                /*int maxIndex = 0;
+                int maxVal = listToCheck[0].Count;
+                for (int i = 0; i < listToCheck.Count; i++)
+                {
+                    if (maxVal < listToCheck[i].Count)
+                    {
+                        maxVal = listToCheck[i].Count;
+                        maxIndex = i;
+                    }
+                }
+                listToCheck.RemoveAt(maxIndex);*/
             }
-            //Remove Min set 
-            int minIndex = 0;
-            int minVal = listToCheck[0].Count;
-            for (int i = 0; i < listToCheck.Count; i++)
-            {
-                if (minVal > listToCheck[i].Count)
-                {
-                    minVal = listToCheck[i].Count;
-                    minIndex = i;
-                }
-            }
-            listToCheck.RemoveAt(minIndex);
-            //Remove Max set
-            /*int maxIndex = 0;
-            int maxVal = listToCheck[0].Count;
-            for (int i = 0; i < listToCheck.Count; i++)
-            {
-                if (maxVal < listToCheck[i].Count)
-                {
-                    maxVal = listToCheck[i].Count;
-                    maxIndex = i;
-                }
-            }
-            listToCheck.RemoveAt(maxIndex);*/
         }
         //calculates average of sets and returns it as a new list
         private List<double> CalculateAverageSet(ref List<List<double>> listOfSets)
         {
             List<double> averageList = new List<double>();
             double totalaverage = 0;
-
             for (int j = 0; j < FindMinSetTime(listOfSets); j++)
             {
                 totalaverage = 0;
@@ -1154,6 +1164,12 @@ namespace EyelinkFileAnalizer
         {
             Form2 secondForm = new Form2();
             secondForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form3 thirdForm = new Form3();
+            thirdForm.Show();
         }
     }
 }
