@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\VS Sorce Code",
-    "\\VS Sorce Code\\smEyelinkFileAnalyzerForHorizontalVelocities",
-    "\\VS Sorce Code\\smEyelinkFileAnalyzerForVerticalVelocities",
-    "\\VS Sorce Code\\Test Data"
+    "\\VS Sorce Code\\EyelinkFileAnalyzerForMisalignment",
+    "\\VS Sorce Code\\smEyelinkFileAnalyzerForVerticalVelocities"
   ],
-  "SelectedNode": "\\VS Sorce Code\\smEyelinkFileAnalyzerForHorizontalVelocities\\Form1.cs",
+  "SelectedNode": "\\VS Sorce Code\\EyelinkFileAnalyzerForMisalignment\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

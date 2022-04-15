@@ -10,10 +10,13 @@ namespace EyelinkFileAnalizer
 {
     public partial class Form1 : Form
     {
+        private Form3 f3;
         public Form1()
         {
             InitializeComponent();
+            f3 = new Form3();
         }
+
         //This function helps the Drag and Drop functionality work
         private void DragAndDropTB_DragDrop(object sender, DragEventArgs e)
         {
@@ -91,26 +94,43 @@ namespace EyelinkFileAnalizer
                         else endXPosition = Convert.ToDouble(splitData[7]);
                         if (splitData[8] == ".") endYPosition = 0;
                         else endYPosition = Convert.ToDouble(splitData[8]);
+
                         if (splitData[9] == ".") amplitude = 0;
-                        //else if (Convert.ToDouble(splitData[9]) > 45) amplitude = 0;
-                        else amplitude = Convert.ToDouble(splitData[9]);
+                        else if (double.TryParse(f3.MaxAmplitudeBox.Text, out double num))//check if text is a number
+                        {
+                            if (Convert.ToDouble(splitData[9]) > num) amplitude = 0;
+                            else amplitude = Convert.ToDouble(splitData[9]);
+                        }
+                        else
+                        {
+                            if (Convert.ToDouble(splitData[9]) > 45) amplitude = 0;
+                            else amplitude = Convert.ToDouble(splitData[9]);
+                        }
+
                         if (splitData[10] == ".") peakVelocity = 0;
                         else peakVelocity = Convert.ToDouble(splitData[10]);
 
                         // get average Velocity
                         averageVelocity = amplitude / (duration / 1000);
                         // Mid = 440 - 840
-                        if ((startXPosition > 480) && (startXPosition < 800)) direction = "Center To ";
-                        if (startXPosition > 800) direction = "Right To ";
-                        if (startXPosition < 480) direction = "Left To ";
-                        if ((endXPosition > 480) && (endXPosition < 800)) direction += "Center";
-                        if (endXPosition > 800) direction += "Right";
-                        if (endXPosition < 480) direction += "Left";
+                        double leftCenter;
+                        double rightCenter;
+                        if (double.TryParse(f3.LCThresholdBox.Text, out double num1)) leftCenter = num1;  //check if text is a number
+                        else leftCenter = 440;
+                        if (double.TryParse(f3.RCThresholdBox.Text, out double num2)) rightCenter = num2;
+                        else rightCenter = 840;
+
+                        if ((startXPosition > leftCenter) && (startXPosition < rightCenter)) direction = "Center To ";
+                        if (startXPosition > rightCenter) direction = "Right To ";
+                        if (startXPosition < leftCenter) direction = "Left To ";
+                        if ((endXPosition > leftCenter) && (endXPosition < rightCenter)) direction += "Center";
+                        if (endXPosition > rightCenter) direction += "Right";
+                        if (endXPosition < leftCenter) direction += "Left";
 
                         //add to appropriate list of Saccade classes
                         if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 2))
                         {
-                            //MessageBox.Show("REAbd: ESACC " + eyeTracked + " " + startTime);
+                            MessageBox.Show("REAbd: ESACC " + eyeTracked + " " + startTime);
                             rightEyeAbductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
@@ -396,9 +416,6 @@ namespace EyelinkFileAnalizer
                     MessageBox.Show("Warning:\nNo Left Eye Adductions Detected\nForm1.cs:375");
                     lEAdductionsEmpty = true;
                 }
-                /* progressBar1.Value = 0;
-                DragAndDropTB.Text = string.Empty;
-                return; */
 
                 //get sample data 
                 List<List<double>> horizontalVelocitiesOverTimeRightEyeAbd = new List<List<double>>();
@@ -1166,10 +1183,9 @@ namespace EyelinkFileAnalizer
             secondForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnFormThree_Click(object sender, EventArgs e)
         {
-            Form3 thirdForm = new Form3();
-            thirdForm.Show();
+            f3.Show();
         }
     }
 }

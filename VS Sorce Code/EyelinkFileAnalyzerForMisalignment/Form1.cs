@@ -63,7 +63,7 @@ namespace EyelinkFileAnalizer
             }
             else
             {
-                eyeToScreenDistance = 770;
+                eyeToScreenDistance = 790;
             }
 
 

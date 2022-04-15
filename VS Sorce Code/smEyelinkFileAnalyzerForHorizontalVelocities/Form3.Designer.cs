@@ -32,8 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RCThresholdBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.MinAmplitudeBox = new System.Windows.Forms.TextBox();
+            this.MaxAmplitudeBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LCThresholdBox
@@ -72,13 +74,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Right and Center Resolution Threshold (Default: 840)";
             // 
-            // MinAmplitudeBox
+            // MaxAmplitudeBox
             // 
-            this.MinAmplitudeBox.Location = new System.Drawing.Point(12, 84);
-            this.MinAmplitudeBox.Name = "MinAmplitudeBox";
-            this.MinAmplitudeBox.Size = new System.Drawing.Size(73, 22);
-            this.MinAmplitudeBox.TabIndex = 4;
-            this.MinAmplitudeBox.Text = "45";
+            this.MaxAmplitudeBox.Location = new System.Drawing.Point(12, 84);
+            this.MaxAmplitudeBox.Name = "MaxAmplitudeBox";
+            this.MaxAmplitudeBox.Size = new System.Drawing.Size(73, 22);
+            this.MaxAmplitudeBox.TabIndex = 4;
+            this.MaxAmplitudeBox.Text = "45";
             // 
             // label3
             // 
@@ -86,17 +88,38 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(92, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(420, 20);
+            this.label3.Size = new System.Drawing.Size(387, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Minimum Amplitude Requirement (Default: 45 degrees)";
+            this.label3.Text = "Maximum Amplitude Allowed (Default: 45 degrees)";
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(431, 133);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(121, 23);
+            this.exitButton.TabIndex = 6;
+            this.exitButton.Text = "Save and Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(229, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(173, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Click Save and Exit to Close";
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 133);
+            this.ClientSize = new System.Drawing.Size(564, 168);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.MinAmplitudeBox);
+            this.Controls.Add(this.MaxAmplitudeBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.RCThresholdBox);
             this.Controls.Add(this.label1);
@@ -109,12 +132,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox LCThresholdBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox RCThresholdBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox MinAmplitudeBox;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox LCThresholdBox;
+        public System.Windows.Forms.TextBox RCThresholdBox;
+        public System.Windows.Forms.TextBox MaxAmplitudeBox;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label label4;
     }
 }

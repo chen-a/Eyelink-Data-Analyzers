@@ -50,7 +50,7 @@
             this.removeLabel = new System.Windows.Forms.Label();
             this.removeOutliersBT = new System.Windows.Forms.CheckBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFormThree = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             this.DragAndDropTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DragAndDropTB.Location = new System.Drawing.Point(9, 101);
-            this.DragAndDropTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DragAndDropTB.Margin = new System.Windows.Forms.Padding(2);
             this.DragAndDropTB.Multiline = true;
             this.DragAndDropTB.Name = "DragAndDropTB";
             this.DragAndDropTB.Size = new System.Drawing.Size(600, 71);
@@ -82,7 +82,7 @@
             // 
             this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StartButton.Location = new System.Drawing.Point(485, 174);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(2);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(126, 26);
             this.StartButton.TabIndex = 2;
@@ -105,7 +105,7 @@
             // 
             this.AcclerationDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AcclerationDataButton.Location = new System.Drawing.Point(12, 557);
-            this.AcclerationDataButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AcclerationDataButton.Margin = new System.Windows.Forms.Padding(2);
             this.AcclerationDataButton.Name = "AcclerationDataButton";
             this.AcclerationDataButton.Size = new System.Drawing.Size(119, 28);
             this.AcclerationDataButton.TabIndex = 4;
@@ -152,7 +152,7 @@
             "Left Eye Average Adduction",
             "Left Eye Average Acceleration Adduction"});
             this.comboBox1.Location = new System.Drawing.Point(127, 263);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(277, 24);
             this.comboBox1.TabIndex = 8;
@@ -185,7 +185,7 @@
             // ClearButton
             // 
             this.ClearButton.Location = new System.Drawing.Point(140, 174);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(127, 25);
             this.ClearButton.TabIndex = 11;
@@ -206,7 +206,7 @@
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(15, 289);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.MaximumSize = new System.Drawing.Size(595, 265);
             this.chart1.MinimumSize = new System.Drawing.Size(595, 265);
             this.chart1.Name = "chart1";
@@ -232,7 +232,7 @@
             // ChooseFileBT
             // 
             this.ChooseFileBT.Location = new System.Drawing.Point(9, 174);
-            this.ChooseFileBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChooseFileBT.Margin = new System.Windows.Forms.Padding(2);
             this.ChooseFileBT.Name = "ChooseFileBT";
             this.ChooseFileBT.Size = new System.Drawing.Size(127, 26);
             this.ChooseFileBT.TabIndex = 20;
@@ -243,7 +243,7 @@
             // btnFormTwo
             // 
             this.btnFormTwo.Location = new System.Drawing.Point(466, 557);
-            this.btnFormTwo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFormTwo.Margin = new System.Windows.Forms.Padding(2);
             this.btnFormTwo.Name = "btnFormTwo";
             this.btnFormTwo.Size = new System.Drawing.Size(145, 28);
             this.btnFormTwo.TabIndex = 24;
@@ -266,7 +266,7 @@
             this.removeOutliersBT.Checked = true;
             this.removeOutliersBT.CheckState = System.Windows.Forms.CheckState.Checked;
             this.removeOutliersBT.Location = new System.Drawing.Point(441, 265);
-            this.removeOutliersBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.removeOutliersBT.Margin = new System.Windows.Forms.Padding(2);
             this.removeOutliersBT.Name = "removeOutliersBT";
             this.removeOutliersBT.Size = new System.Drawing.Size(159, 20);
             this.removeOutliersBT.TabIndex = 26;
@@ -276,27 +276,27 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(272, 175);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(209, 25);
             this.progressBar1.TabIndex = 27;
             // 
-            // button1
+            // btnFormThree
             // 
-            this.button1.Location = new System.Drawing.Point(472, 68);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 31);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Advanced Options";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnFormThree.Location = new System.Drawing.Point(472, 68);
+            this.btnFormThree.Name = "btnFormThree";
+            this.btnFormThree.Size = new System.Drawing.Size(137, 31);
+            this.btnFormThree.TabIndex = 28;
+            this.btnFormThree.Text = "Advanced Options";
+            this.btnFormThree.UseVisualStyleBackColor = true;
+            this.btnFormThree.Click += new System.EventHandler(this.BtnFormThree_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 622);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnFormThree);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.removeOutliersBT);
             this.Controls.Add(this.removeLabel);
@@ -314,7 +314,7 @@
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.Instructions);
             this.Controls.Add(this.DragAndDropTB);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(652, 669);
             this.MinimumSize = new System.Drawing.Size(652, 669);
             this.Name = "Form1";
@@ -346,7 +346,7 @@
         private System.Windows.Forms.Label removeLabel;
         private System.Windows.Forms.CheckBox removeOutliersBT;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFormThree;
     }
 }
 

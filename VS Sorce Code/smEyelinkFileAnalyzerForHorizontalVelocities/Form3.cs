@@ -16,5 +16,15 @@ namespace EyelinkFileAnalizer
         {
             InitializeComponent();
         }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void Form3_FormClosing (object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
     }
 }
