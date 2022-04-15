@@ -52,9 +52,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.Location = new System.Drawing.Point(92, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(396, 20);
+            this.label1.Size = new System.Drawing.Size(383, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Left and Center Resolution Threshold (Default: 440)";
+            this.label1.Text = "Left to Center Resolution Threshold (Default: 440)";
             // 
             // RCThresholdBox
             // 
@@ -70,9 +70,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.Location = new System.Drawing.Point(92, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(406, 20);
+            this.label2.Size = new System.Drawing.Size(393, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Right and Center Resolution Threshold (Default: 840)";
+            this.label2.Text = "Right to Center Resolution Threshold (Default: 840)";
             // 
             // MaxAmplitudeBox
             // 
@@ -105,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(60, 136);
+            this.label4.Location = new System.Drawing.Point(49, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(347, 16);
             this.label4.TabIndex = 7;
