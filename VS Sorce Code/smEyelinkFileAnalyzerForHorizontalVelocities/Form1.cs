@@ -130,28 +130,24 @@ namespace EyelinkFileAnalizer
                         //add to appropriate list of Saccade classes
                         if ((eyeTracked == "Right") && (direction == "Center To Right") && (amplitude > 2))
                         {
-                            //MessageBox.Show("REAbd: ESACC " + eyeTracked + " " + startTime);
                             rightEyeAbductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
                         if ((eyeTracked == "Right") && (direction == "Center To Left") && (amplitude > 5))
                         {
-                            //MessageBox.Show("REAdd: ESACC " + eyeTracked + " " + startTime);
                             rightEyeAdductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
                         if ((eyeTracked == "Left") && (direction == "Center To Left") && (amplitude > 5))
                         {
-                            //MessageBox.Show("LEAbd: ESACC " + eyeTracked + " " + startTime);
                             leftEyeAbductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
                         }
                         if ((eyeTracked == "Left") && (direction == "Center To Right") && (amplitude > 5))
                         {
-                            //MessageBox.Show("LEAdd: ESACC " + eyeTracked + " " + startTime);
                             leftEyeAdductions.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                 startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                     averageVelocity, direction));
@@ -613,13 +609,9 @@ namespace EyelinkFileAnalizer
                         {
                             averageTotal += leftEyeAdductions[i].getAverageVelocity();
                         }
-                        MessageBox.Show("ag1");
                         averageTotal /= leftEyeAdductions.Count;
-                        MessageBox.Show("ag2");
                         if (removeOutliersBT.Checked == true) RemoveOutliers(ref horizontalVelocitiesOverTimeLeftEyeAdd);
-                        MessageBox.Show("ag3");
                         averageList = CalculateAverageSet(ref horizontalVelocitiesOverTimeLeftEyeAdd);
-                        MessageBox.Show("ag4");
 
                         double peakValue = FindPeakValue(averageList);
                         doc.Add(new Paragraph("Average Velocity: " + Math.Round(averageTotal, 2) + " degrees/second\n"));
@@ -904,12 +896,10 @@ namespace EyelinkFileAnalizer
         //remeoves werid data and the minimum timed value
         private void RemoveOutliers(ref List<List<Double>> listToCheck)
         {
-            //MessageBox.Show("array size = " + listToCheck.Count);
             if (listToCheck.Count > 3)
             {
                 for (int i = 0; i < listToCheck.Count; i++)
                 {
-                    //MessageBox.Show("array[" + i + "] = " + listToCheck[i].Count);
                     if (listToCheck[i].Count < 2)
                     {
                         listToCheck.RemoveAt(i);
