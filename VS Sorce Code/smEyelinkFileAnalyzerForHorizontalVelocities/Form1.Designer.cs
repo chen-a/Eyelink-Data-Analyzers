@@ -59,11 +59,11 @@
             this.DragAndDropTB.AllowDrop = true;
             this.DragAndDropTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragAndDropTB.Location = new System.Drawing.Point(9, 101);
+            this.DragAndDropTB.Location = new System.Drawing.Point(7, 82);
             this.DragAndDropTB.Margin = new System.Windows.Forms.Padding(2);
             this.DragAndDropTB.Multiline = true;
             this.DragAndDropTB.Name = "DragAndDropTB";
-            this.DragAndDropTB.Size = new System.Drawing.Size(600, 71);
+            this.DragAndDropTB.Size = new System.Drawing.Size(451, 58);
             this.DragAndDropTB.TabIndex = 0;
             this.DragAndDropTB.TextChanged += new System.EventHandler(this.DragAndDropTB_TextChanged);
             this.DragAndDropTB.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragAndDropTB_DragDrop);
@@ -72,19 +72,19 @@
             // Instructions
             // 
             this.Instructions.AutoSize = true;
-            this.Instructions.Location = new System.Drawing.Point(9, 70);
+            this.Instructions.Location = new System.Drawing.Point(7, 57);
             this.Instructions.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Instructions.Name = "Instructions";
-            this.Instructions.Size = new System.Drawing.Size(0, 16);
+            this.Instructions.Size = new System.Drawing.Size(0, 13);
             this.Instructions.TabIndex = 1;
             // 
             // StartButton
             // 
             this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StartButton.Location = new System.Drawing.Point(485, 174);
+            this.StartButton.Location = new System.Drawing.Point(364, 141);
             this.StartButton.Margin = new System.Windows.Forms.Padding(2);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(126, 26);
+            this.StartButton.Size = new System.Drawing.Size(94, 21);
             this.StartButton.TabIndex = 2;
             this.StartButton.Text = "Create Report";
             this.StartButton.UseVisualStyleBackColor = true;
@@ -94,20 +94,20 @@
             // 
             this.lnstructionBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnstructionBox.Location = new System.Drawing.Point(9, 6);
+            this.lnstructionBox.Location = new System.Drawing.Point(7, 5);
             this.lnstructionBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lnstructionBox.Name = "lnstructionBox";
-            this.lnstructionBox.Size = new System.Drawing.Size(599, 93);
+            this.lnstructionBox.Size = new System.Drawing.Size(449, 76);
             this.lnstructionBox.TabIndex = 3;
             this.lnstructionBox.Text = resources.GetString("lnstructionBox.Text");
             // 
             // AcclerationDataButton
             // 
             this.AcclerationDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcclerationDataButton.Location = new System.Drawing.Point(12, 557);
+            this.AcclerationDataButton.Location = new System.Drawing.Point(9, 453);
             this.AcclerationDataButton.Margin = new System.Windows.Forms.Padding(2);
             this.AcclerationDataButton.Name = "AcclerationDataButton";
-            this.AcclerationDataButton.Size = new System.Drawing.Size(119, 28);
+            this.AcclerationDataButton.Size = new System.Drawing.Size(89, 23);
             this.AcclerationDataButton.TabIndex = 4;
             this.AcclerationDataButton.Text = "Get Raw Data \r\n";
             this.AcclerationDataButton.UseVisualStyleBackColor = true;
@@ -118,10 +118,10 @@
             this.VelocityLable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.VelocityLable.AutoSize = true;
-            this.VelocityLable.Location = new System.Drawing.Point(-2, 402);
+            this.VelocityLable.Location = new System.Drawing.Point(-2, 327);
             this.VelocityLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VelocityLable.Name = "VelocityLable";
-            this.VelocityLable.Size = new System.Drawing.Size(0, 16);
+            this.VelocityLable.Size = new System.Drawing.Size(0, 13);
             this.VelocityLable.TabIndex = 6;
             // 
             // TimeLable
@@ -129,10 +129,10 @@
             this.TimeLable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TimeLable.AutoSize = true;
-            this.TimeLable.Location = new System.Drawing.Point(292, 557);
+            this.TimeLable.Location = new System.Drawing.Point(219, 453);
             this.TimeLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TimeLable.Name = "TimeLable";
-            this.TimeLable.Size = new System.Drawing.Size(0, 16);
+            this.TimeLable.Size = new System.Drawing.Size(0, 13);
             this.TimeLable.TabIndex = 7;
             // 
             // comboBox1
@@ -151,10 +151,10 @@
             "Left Eye Adductions",
             "Left Eye Average Adduction",
             "Left Eye Average Acceleration Adduction"});
-            this.comboBox1.Location = new System.Drawing.Point(127, 263);
+            this.comboBox1.Location = new System.Drawing.Point(95, 214);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(277, 24);
+            this.comboBox1.Size = new System.Drawing.Size(209, 21);
             this.comboBox1.TabIndex = 8;
             this.comboBox1.TextChanged += new System.EventHandler(this.ComboBox1_TextChanged);
             // 
@@ -163,10 +163,10 @@
             this.AccInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AccInstructions.AutoSize = true;
-            this.AccInstructions.Location = new System.Drawing.Point(9, 202);
+            this.AccInstructions.Location = new System.Drawing.Point(7, 164);
             this.AccInstructions.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AccInstructions.Name = "AccInstructions";
-            this.AccInstructions.Size = new System.Drawing.Size(541, 48);
+            this.AccInstructions.Size = new System.Drawing.Size(443, 39);
             this.AccInstructions.TabIndex = 9;
             this.AccInstructions.Text = "Graph Instructions:\r\nWith a chosen file in the box use the \"Choose Graph\" box to " +
     "view different graphs or use the\r\n \"Get Raw Data\" button to get a text file with" +
@@ -175,19 +175,19 @@
             // ChooseGraphLabel
             // 
             this.ChooseGraphLabel.AutoSize = true;
-            this.ChooseGraphLabel.Location = new System.Drawing.Point(16, 265);
+            this.ChooseGraphLabel.Location = new System.Drawing.Point(12, 215);
             this.ChooseGraphLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ChooseGraphLabel.Name = "ChooseGraphLabel";
-            this.ChooseGraphLabel.Size = new System.Drawing.Size(97, 16);
+            this.ChooseGraphLabel.Size = new System.Drawing.Size(78, 13);
             this.ChooseGraphLabel.TabIndex = 10;
             this.ChooseGraphLabel.Text = "Choose Graph:";
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(140, 174);
+            this.ClearButton.Location = new System.Drawing.Point(105, 141);
             this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(127, 25);
+            this.ClearButton.Size = new System.Drawing.Size(95, 20);
             this.ClearButton.TabIndex = 11;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -205,10 +205,10 @@
             legend1.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(15, 289);
+            this.chart1.Location = new System.Drawing.Point(11, 235);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
-            this.chart1.MaximumSize = new System.Drawing.Size(595, 265);
-            this.chart1.MinimumSize = new System.Drawing.Size(595, 265);
+            this.chart1.MaximumSize = new System.Drawing.Size(446, 215);
+            this.chart1.MinimumSize = new System.Drawing.Size(446, 215);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
@@ -223,7 +223,7 @@
         System.Drawing.Color.Silver,
         System.Drawing.Color.Green,
         System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))))};
-            this.chart1.Size = new System.Drawing.Size(595, 265);
+            this.chart1.Size = new System.Drawing.Size(446, 215);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
             title1.Name = "Title1";
@@ -231,10 +231,10 @@
             // 
             // ChooseFileBT
             // 
-            this.ChooseFileBT.Location = new System.Drawing.Point(9, 174);
+            this.ChooseFileBT.Location = new System.Drawing.Point(7, 141);
             this.ChooseFileBT.Margin = new System.Windows.Forms.Padding(2);
             this.ChooseFileBT.Name = "ChooseFileBT";
-            this.ChooseFileBT.Size = new System.Drawing.Size(127, 26);
+            this.ChooseFileBT.Size = new System.Drawing.Size(95, 21);
             this.ChooseFileBT.TabIndex = 20;
             this.ChooseFileBT.Text = "Choose File";
             this.ChooseFileBT.UseVisualStyleBackColor = true;
@@ -242,10 +242,10 @@
             // 
             // btnFormTwo
             // 
-            this.btnFormTwo.Location = new System.Drawing.Point(466, 557);
+            this.btnFormTwo.Location = new System.Drawing.Point(350, 453);
             this.btnFormTwo.Margin = new System.Windows.Forms.Padding(2);
             this.btnFormTwo.Name = "btnFormTwo";
-            this.btnFormTwo.Size = new System.Drawing.Size(145, 28);
+            this.btnFormTwo.Size = new System.Drawing.Size(109, 23);
             this.btnFormTwo.TabIndex = 24;
             this.btnFormTwo.Text = "Standard Deviation";
             this.btnFormTwo.UseVisualStyleBackColor = true;
@@ -254,10 +254,10 @@
             // removeLabel
             // 
             this.removeLabel.AutoSize = true;
-            this.removeLabel.Location = new System.Drawing.Point(463, 270);
+            this.removeLabel.Location = new System.Drawing.Point(347, 219);
             this.removeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.removeLabel.Name = "removeLabel";
-            this.removeLabel.Size = new System.Drawing.Size(0, 16);
+            this.removeLabel.Size = new System.Drawing.Size(0, 13);
             this.removeLabel.TabIndex = 25;
             // 
             // removeOutliersBT
@@ -265,27 +265,28 @@
             this.removeOutliersBT.AutoSize = true;
             this.removeOutliersBT.Checked = true;
             this.removeOutliersBT.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.removeOutliersBT.Location = new System.Drawing.Point(441, 265);
+            this.removeOutliersBT.Location = new System.Drawing.Point(331, 215);
             this.removeOutliersBT.Margin = new System.Windows.Forms.Padding(2);
             this.removeOutliersBT.Name = "removeOutliersBT";
-            this.removeOutliersBT.Size = new System.Drawing.Size(159, 20);
+            this.removeOutliersBT.Size = new System.Drawing.Size(129, 17);
             this.removeOutliersBT.TabIndex = 26;
             this.removeOutliersBT.Text = "Auto Remove Outliers";
             this.removeOutliersBT.UseVisualStyleBackColor = true;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(272, 175);
+            this.progressBar1.Location = new System.Drawing.Point(204, 142);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(209, 25);
+            this.progressBar1.Size = new System.Drawing.Size(157, 20);
             this.progressBar1.TabIndex = 27;
             // 
             // btnFormThree
             // 
-            this.btnFormThree.Location = new System.Drawing.Point(472, 68);
+            this.btnFormThree.Location = new System.Drawing.Point(356, 53);
+            this.btnFormThree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFormThree.Name = "btnFormThree";
-            this.btnFormThree.Size = new System.Drawing.Size(137, 31);
+            this.btnFormThree.Size = new System.Drawing.Size(103, 25);
             this.btnFormThree.TabIndex = 28;
             this.btnFormThree.Text = "Advanced Options";
             this.btnFormThree.UseVisualStyleBackColor = true;
@@ -293,9 +294,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 622);
+            this.ClientSize = new System.Drawing.Size(477, 512);
             this.Controls.Add(this.btnFormThree);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.removeOutliersBT);
@@ -315,8 +316,8 @@
             this.Controls.Add(this.Instructions);
             this.Controls.Add(this.DragAndDropTB);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(652, 669);
-            this.MinimumSize = new System.Drawing.Size(652, 669);
+            this.MaximumSize = new System.Drawing.Size(493, 551);
+            this.MinimumSize = new System.Drawing.Size(493, 551);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EyeLink Text File Analyzer: Horizontal Saccades";
