@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.DragAndDropTB = new System.Windows.Forms.TextBox();
             this.Instructions = new System.Windows.Forms.Label();
             this.StartButton = new System.Windows.Forms.Button();
@@ -198,13 +198,13 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.AutoFitMinFontSize = 14;
-            legend1.ItemColumnSpacing = 80;
-            legend1.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.AutoFitMinFontSize = 14;
+            legend2.ItemColumnSpacing = 80;
+            legend2.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(11, 235);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.MaximumSize = new System.Drawing.Size(446, 215);
@@ -226,8 +226,8 @@
             this.chart1.Size = new System.Drawing.Size(446, 215);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
-            title1.Name = "Title1";
-            this.chart1.Titles.Add(title1);
+            title2.Name = "Title1";
+            this.chart1.Titles.Add(title2);
             // 
             // ChooseFileBT
             // 
@@ -283,7 +283,7 @@
             // 
             // btnFormThree
             // 
-            this.btnFormThree.Location = new System.Drawing.Point(356, 53);
+            this.btnFormThree.Location = new System.Drawing.Point(356, 51);
             this.btnFormThree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFormThree.Name = "btnFormThree";
             this.btnFormThree.Size = new System.Drawing.Size(103, 25);
