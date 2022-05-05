@@ -10,9 +10,11 @@ namespace EyelinkFileAnalizer
 {
     public partial class Form1 : Form
     {
+        private Form3 f3;
         public Form1()
         {
             InitializeComponent();
+            f3 = new Form3();
         }
         //This function helps the Drag and Drop functionality work
         private void DragAndDropTB_DragDrop(object sender, DragEventArgs e)
@@ -1309,10 +1311,10 @@ namespace EyelinkFileAnalizer
             Form2 secondForm = new Form2();
             secondForm.Show();
         }
-        
-        private void TestSelectionBox_TextChanged(object sender, EventArgs e)
+
+        private void BtnFormThree_Click(object sender, EventArgs e)
         {
-            comboBox1.Text = "";
+            f3.Show();
         }
     }
 }
