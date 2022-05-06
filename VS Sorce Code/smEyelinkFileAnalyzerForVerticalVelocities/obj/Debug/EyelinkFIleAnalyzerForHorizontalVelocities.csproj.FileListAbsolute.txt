@@ -64,3 +64,4 @@ C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFi
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.exe
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.pdb
 C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFIleAnalyzerForHorizontalVelocities.csproj.AssemblyReference.cache
+C:\Users\andya\Documents\GitHub\Eyelink-Data-Analyzers\VS Sorce Code\smEyelinkFileAnalyzerForVerticalVelocities\obj\Debug\EyelinkFileAnalizer.Form3.resources
