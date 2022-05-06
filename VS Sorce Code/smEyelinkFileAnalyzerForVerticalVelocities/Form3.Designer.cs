@@ -139,9 +139,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox TCThresholdBox;
-        private System.Windows.Forms.TextBox BCThresholdBox;
-        private System.Windows.Forms.TextBox MaxAmplitudeBox;
+        public System.Windows.Forms.TextBox TCThresholdBox;
+        public System.Windows.Forms.TextBox BCThresholdBox;
+        public System.Windows.Forms.TextBox MaxAmplitudeBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

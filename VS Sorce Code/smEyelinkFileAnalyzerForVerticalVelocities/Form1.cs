@@ -116,13 +116,20 @@ namespace EyelinkFileAnalizer
 
                         // get average Velocity
                         averageVelocity = amplitude / (duration / 1000);
+                        // Mid = 312 - 712
+                        double topCenter;
+                        double botCenter;
+                        if (double.TryParse(f3.TCThresholdBox.Text, out double num1)) topCenter = num1;  //check if text is a number
+                        else topCenter = 712;
+                        if (double.TryParse(f3.BCThresholdBox.Text, out double num2)) botCenter = num2;
+                        else botCenter = 312;
 
-                        if ((startYPosition > 312) && (startYPosition < 712)) direction = "Center To ";
-                        if (startYPosition > 712) direction = "Top To ";
-                        if (startYPosition < 312) direction = "Bottom To ";
-                        if ((endYPosition > 312) && (endYPosition < 712)) direction += "Center";
-                        if (endYPosition > 712) direction += "Top";
-                        if (endYPosition < 312) direction += "Bottom";
+                        if ((startYPosition > botCenter) && (startYPosition < topCenter)) direction = "Center To ";
+                        if (startYPosition > topCenter) direction = "Top To ";
+                        if (startYPosition < botCenter) direction = "Bottom To ";
+                        if ((endYPosition > botCenter) && (endYPosition < topCenter)) direction += "Center";
+                        if (endYPosition > topCenter) direction += "Top";
+                        if (endYPosition < botCenter) direction += "Bottom";
 
                         //add to appropriate list of Saccade classes
                         if ((eyeTracked == "Right") && (direction == "Center To Top") && (amplitude > 5))
