@@ -744,7 +744,10 @@ namespace EyelinkFileAnalizer
                             doc.Add(new Paragraph("Error: No Left Eye Down Data Found"));
                         }
                         doc.NewPage();
-                        
+                        doc.Add(new Paragraph("Advanced Options:"));
+                        doc.Add(new Paragraph("Left to Center Threshold: " + f3.LCThresholdBox.Text));
+                        doc.Add(new Paragraph("Center to Right Threshold: " + f3.RCThresholdBox.Text));
+                        doc.Add(new Paragraph("Maximum Amplitude Allowed: " + f3.MaxAmplitudeBox.Text));
                         //delete image file used to crate pdf
                         File.Delete(imagePath);
                         progressBar1.Value += 20;
