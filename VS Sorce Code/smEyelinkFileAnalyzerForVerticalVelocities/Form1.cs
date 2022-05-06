@@ -1027,48 +1027,51 @@ namespace EyelinkFileAnalizer
         //remeoves werid data and the minimum timed value
         private void RemoveOutliers(ref List<List<Double>> listToCheck)
         {
-            for (int i = 0; i < listToCheck.Count; i++)
+            if (listToCheck.Count > 3)
             {
-                if (listToCheck[i].Count < 2)
+                for (int i = 0; i < listToCheck.Count; i++)
                 {
-                    listToCheck.RemoveAt(i);
-                    i--;
+                    if (listToCheck[i].Count < 2)
+                    {
+                        listToCheck.RemoveAt(i);
+                        i--;
+                    }
+                    double lastPoint = listToCheck[i][(listToCheck[i].Count - 1)];
+                    double secondToLast = listToCheck[i][(listToCheck[i].Count - 2)];
+                    double diffrence = secondToLast - lastPoint;
+                    //make positive
+                    if (diffrence < 0) diffrence *= -1;
+                    if (diffrence > 100)
+                    {
+                        listToCheck.RemoveAt(i);
+                        i--;
+                    }
                 }
-                double lastPoint = listToCheck[i][(listToCheck[i].Count - 1)];
-                double secondToLast = listToCheck[i][(listToCheck[i].Count - 2)];
-                double diffrence = secondToLast - lastPoint;
-                //make positive
-                if (diffrence < 0) diffrence *= -1;
-                if (diffrence > 100)
+                //Remove Min set 
+                int minIndex = 0;
+                int minVal = listToCheck[0].Count;
+                for (int i = 0; i < listToCheck.Count; i++)
                 {
-                    listToCheck.RemoveAt(i);
-                    i--;
+                    if (minVal > listToCheck[i].Count)
+                    {
+                        minVal = listToCheck[i].Count;
+                        minIndex = i;
+                    }
                 }
+                listToCheck.RemoveAt(minIndex);
+                //Remove Max set
+                /*int maxIndex = 0;
+                int maxVal = listToCheck[0].Count;
+                for (int i = 0; i < listToCheck.Count; i++)
+                {
+                    if (maxVal < listToCheck[i].Count)
+                    {
+                        maxVal = listToCheck[i].Count;
+                        maxIndex = i;
+                    }
+                }
+                listToCheck.RemoveAt(maxIndex);*/
             }
-            //Remove Min set 
-            int minIndex = 0;
-            int minVal = listToCheck[0].Count;
-            for (int i = 0; i < listToCheck.Count; i++)
-            {
-                if (minVal > listToCheck[i].Count)
-                {
-                    minVal = listToCheck[i].Count;
-                    minIndex = i;
-                }
-            }
-            listToCheck.RemoveAt(minIndex);
-            //Remove Max set
-            /*int maxIndex = 0;
-            int maxVal = listToCheck[0].Count;
-            for (int i = 0; i < listToCheck.Count; i++)
-            {
-                if (maxVal < listToCheck[i].Count)
-                {
-                    maxVal = listToCheck[i].Count;
-                    maxIndex = i;
-                }
-            }
-            listToCheck.RemoveAt(maxIndex);*/
         }
         //calculates average of sets and returns it as a new list
         private List<double> CalculateAverageSet(ref List<List<double>> listOfSets)
