@@ -137,20 +137,12 @@ namespace EyelinkFileAnalizer
                             rightEyeUp.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                               startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                   averageVelocity, direction));
-                            if (testNumber != 1)
-                            {
-                                MessageBox.Show("RightEyeUp t = " + startTime + " \nStart pos = " + startYPosition + "\tEnd pos = " + endYPosition);
-                            }
                         }
                         if ((eyeTracked == "Right") && (direction == "Center To Bottom") && (amplitude > 5))
                         {
                             rightEyeDown.Add(new Saccade(eyeTracked, startTime, endTime, duration, startXPosition,
                                                   startYPosition, endXPosition, endYPosition, amplitude, peakVelocity,
                                                       averageVelocity, direction));
-                            if (testNumber != 1)
-                            {
-                                MessageBox.Show("RightEyeDown t = " + startTime + " \nStart pos = " + startYPosition + "\tEnd pos = " + endYPosition);
-                            }
                         }
                         if ((eyeTracked == "Left") && (direction == "Center To Top") && (amplitude > 5))
                         { 
@@ -483,22 +475,22 @@ namespace EyelinkFileAnalizer
                     //Check if data is valid
                     if (rightEyeUp.Count == 0)
                     {
-                        MessageBox.Show("Warning:\nNo Right Eye Up Data Detected\nForm1.cs:465\nTest Part " + test);
+                        MessageBox.Show("Warning:\nNo Right Eye Up Data Detected\nForm1.cs:465");
                         rightEyeUpEmpty = true;
                     }
                     if (rightEyeDown.Count == 0)
                     {
-                        MessageBox.Show("Warning:\nNo Right Eye Down Data Detected\nForm1.cs:466\nTest Part " + test);
+                        MessageBox.Show("Warning:\nNo Right Eye Down Data Detected\nForm1.cs:466");
                         rightEyeDownEmpty = true;
                     }
                     if (leftEyeUp.Count == 0)
                     {
-                        MessageBox.Show("Warning:\nNo Left Eye Up Data Detected\nForm1.cs:467\nTest Part " + test);
+                        MessageBox.Show("Warning:\nNo Left Eye Up Data Detected\nForm1.cs:467");
                         leftEyeUpEmpty = true;
                     }
                     if (leftEyeDown.Count == 0)
                     {
-                        MessageBox.Show("Warning:\nNo Left Eye Down Data Detected\nForm1.cs:468\nTest Part " + test);
+                        MessageBox.Show("Warning:\nNo Left Eye Down Data Detected\nForm1.cs:468");
                         leftEyeDownEmpty = true;
                     }
                     //progressBar1.Value = 0;
@@ -521,7 +513,7 @@ namespace EyelinkFileAnalizer
                     List<double> averageList = new List<double>();
                     try
                     {
-                        switch (test)
+                        switch(test)
                         {
                             case 1:
                                 doc.Add(new Paragraph("TEST 1: HEAD STRAIGHT \n\n"));
@@ -537,10 +529,6 @@ namespace EyelinkFileAnalizer
                         doc.Add(new Paragraph("Right Eye Sursumduction: \n"));
                         if (!rightEyeUpEmpty)
                         {
-                            if (test != 1)
-                            {
-                                MessageBox.Show("Test = " + test + "\nRightEyeUp Size = " + rightEyeUp.Count + "\nRightEyeUpSamplees Size = " + rightEyeUpSamples.Count);
-                            }
                             double rightEyeAdbTotal = 0;
                             for (int i = 0; i < rightEyeUp.Count; i++)
                             {
@@ -592,15 +580,11 @@ namespace EyelinkFileAnalizer
                             doc.Add(new Paragraph("Error: No Right Eye Up Data Found"));
                         }
                         doc.NewPage();
-
+                
                         //RIGHT EYE DOWN
                         doc.Add(new Paragraph("Right Eye Infraduction:"));
                         if (!rightEyeDownEmpty)
                         {
-                            if (test != 1)
-                            {
-                                MessageBox.Show("Test = " + test + "\nRightEyeDown Size = " + rightEyeDown.Count + "\nRightEyeUpSamplees Size = " + rightEyeDownSamples.Count);
-                            }
                             double averageTotal = 0;
                             for (int i = 0; i < rightEyeDown.Count; i++)
                             {
@@ -684,7 +668,7 @@ namespace EyelinkFileAnalizer
                             chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
                             gif = Image.GetInstance(imagePath);
                             doc.Add(gif);
-
+                        
                             doc.NewPage();
                             //Print Acceleration Graph
                             KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
@@ -718,7 +702,7 @@ namespace EyelinkFileAnalizer
 
                             if (removeOutliersBT.Checked == true) RemoveOutliers(ref leftEyeDownSamples);
                             averageList = CalculateAverageSet(ref leftEyeDownSamples);
-
+                        
                             double peakValue = FindPeakValue(averageList);
                             doc.Add(new Paragraph("Average Velocity: " + Math.Round(averageTotal, 2) + " degrees/second\n"));
                             doc.Add(new Paragraph("Peak Velocity of Average Curve: " + Math.Round(peakValue, 2) + " degrees/second\n"));
@@ -732,7 +716,7 @@ namespace EyelinkFileAnalizer
                             chart1.SaveImage(imagePath, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Gif);
                             Image gif = Image.GetInstance(imagePath);
                             doc.Add(gif);
-
+                        
                             //get average graph
                             //comboBox1.Text = "Left Eye Average Infraduction";
                             ChartGraph(ref leftEyeDownSamples, "Left Eye Average Infraduction");//NEW
@@ -740,7 +724,7 @@ namespace EyelinkFileAnalizer
                             gif = Image.GetInstance(imagePath);
                             doc.Add(gif);
 
-
+                        
                             doc.NewPage();
                             //Print Acceleration Graph
                             KeyValuePair<int, double> peakAccelerationDataPoint = new KeyValuePair<int, double>();
@@ -779,10 +763,6 @@ namespace EyelinkFileAnalizer
                         MessageBox.Show("Non IOEXCeption Error\n" + exc + "\nForm1.cs:703");
                         progressBar1.Value = 0;
                         return;
-                    }
-                    finally
-                    {
-                        doc.Close();
                     }
                 }
                 progressBar1.Value = 0;

@@ -94,9 +94,9 @@
             this.label3.Location = new System.Drawing.Point(69, 71);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(323, 17);
+            this.label3.Size = new System.Drawing.Size(331, 17);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Maximum Amplitude Allowed (Default: 45 degrees)";
+            this.label3.Text = "Maximum Amplitude Allowed (Deefault: 45 degrees)";
             // 
             // label4
             // 
