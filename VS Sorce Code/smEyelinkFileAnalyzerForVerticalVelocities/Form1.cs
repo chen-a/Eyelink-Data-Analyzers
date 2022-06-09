@@ -303,7 +303,6 @@ namespace EyelinkFileAnalizer
             //find input file directory and create a file stream
             string fileDirectory = DragAndDropTB.Text;
             FileStream inputFile = new FileStream(fileDirectory, FileMode.Open, FileAccess.Read);
-            MessageBox.Show("listToRead size = " + listToRead.Count);
             // read file line by line
             using (var streamReader = new StreamReader(inputFile))
             {
@@ -319,7 +318,6 @@ namespace EyelinkFileAnalizer
                         else
                         {
                             List<double> sublist = new List<double>();//must create sublist to properly add to a list of lists
-                            MessageBox.Show("splitData length = " + splitData.Length + "\nTime = " + splitData[0]);
                             bool keepGoing = true;
                             while (keepGoing)
                             {
@@ -687,10 +685,6 @@ namespace EyelinkFileAnalizer
                             doc.Add(new Paragraph("Right Eye Infraduction:"));
                             if (!rightEyeDownEmpty)
                             {
-                                if (test != 1)
-                                {
-                                    MessageBox.Show("Test = " + test + "\nRightEyeDown Size = " + rightEyeDown.Count + "\nRightEyeUpSamplees Size = " + rightEyeDownSamples.Count);
-                                }
                                 double averageTotal = 0;
                                 for (int i = 0; i < rightEyeDown.Count; i++)
                                 {
